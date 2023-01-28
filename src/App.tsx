@@ -1,7 +1,11 @@
-import { useState } from 'react'
+import { ReactNode, useState } from 'react'
 import './App.scss'
+interface Props {
+  children?:ReactNode
+  // any props that come into the component
+}
 
-function App() {
+function App({children}:Props) {
   const [count, setCount] = useState(0)
 
   return (
