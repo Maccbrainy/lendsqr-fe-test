@@ -1,0 +1,22 @@
+/*--------------------------------------------------------------
+# Variables Base
+--------------------------------------------------------------*/
+@import '/src/sass/base/variables';
+#root {
+    margin: 0 auto;
+    padding: 0;
+  }
+
+.App {
+    .card {
+        border: 20px;
+        border-color: $black;
+        border-radius: 18px;
+  
+        .appStyle{
+            font-size: xx-large;
+            padding: 20px;
+            color: $white;
+        }
+    }
+}
