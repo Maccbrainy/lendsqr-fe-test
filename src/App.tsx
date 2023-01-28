@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react'
+import { ReactNode } from 'react'
 import './App.scss'
 interface Props {
   children?:ReactNode
@@ -6,16 +6,11 @@ interface Props {
 }
 
 function App({children}:Props) {
-  const [count, setCount] = useState(0)
 
   return (
     <div className="App">
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button className='appStyle' type='button' onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
+      <main>{children}</main>
+      <footer></footer>
     </div>
   )
 }
