@@ -1,3 +1,37 @@
+.flex {
+    display: flex;
+}
+.flex-row {
+    flex-direction: row;
+}
+.flex-col {
+    flex-direction: column;
+}
+.flex-nowrap {
+    flex-wrap: nowrap;
+}
+.justify-center {
+    justify-content: center;
+}
+.justify-start {
+    justify-content: start;
+}
+.items-center {
+    align-items: center;
+}
+.gap-10 {
+    gap: 40px;
+}
+.underline {
+    text-decoration: underline
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+.shadow-lg {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
 /*--------------------------------------------------------------
 # Variables Base
 --------------------------------------------------------------*/
