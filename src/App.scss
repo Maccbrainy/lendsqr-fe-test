@@ -42,15 +42,322 @@
   }
 
 .App {
-    .card {
-        border: 20px;
-        border-color: $black;
-        border-radius: 18px;
-  
-        .appStyle{
-            font-size: xx-large;
-            padding: 20px;
-            color: $white;
+    position: relative;
+    background: $white;
+    color: $blue;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+}
+/*--------------------------------------------------------------
+# Dashbord page
+--------------------------------------------------------------*/
+.navigation-top-bar {
+    width: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: auto;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 400;
+    font-size: 16px;
+    z-index: 20;
+    padding: 0 16px 0 16px;
+    background: $white;
+
+}
+.dashboard-page {
+    position: relative;
+    width: 100%;
+    // padding: 0 16px 0 16px;
+    // border: 1px solid red;
+
+    .dashboard-page-layout {
+        position: inherit;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 40px;
+        background: $white_normal;
+
+        .dashboard-layout-sidebar {
+            position: inherit;
+            width: 30%;
+            background: $white;
+            box-shadow: 0 0px 4px -3px rgb(0 0 0 / 0.1), 3px 0px 15px -10px rgb(0 0 0 / 0.1);
+            nav {
+                width: 100%;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                .nav-section {
+                    display: flex;
+                    flex-direction: column;
+                    padding-top: 15px;
+
+                    .nav-title {
+                        font-size: 13px;
+                        text-transform: uppercase;
+                        margin-left: 10%;
+                        padding-top: 8px;
+                        padding-bottom: 8px;
+                    }
+                    .nav-main {
+                        width: 100%;
+                        color: $blue-light;
+                        display: flex;
+                        font-size: 14px;
+                        align-items: center;
+                        cursor: pointer;
+    
+                            .active-link {
+                                position: absolute;
+                                width: 4px;
+                                height: 40px;
+                                background: $teal;
+                            }
+
+                        .nav-link {
+                            display: flex;
+                            flex-wrap: nowrap;
+                            align-items: center;
+                            gap: 0.5em;
+                            margin-left: 10%;
+                            height: 40px;
+                            padding-top: 6px;
+                            padding-bottom: 6px;
+                        }
+                        &:hover,
+                        &.active {
+                            background: $teal-light;
+                        }
+                    }
+                }
+
+                
+            }
+        }
+        .dashboard-layout-mainbar{
+            width: 100%;
+            // border: 1px solid green;
+            padding: 2em 1em 2em 1em;
         }
     }
+}
+/**==========================
+TheUsersPage
+=============================
+**/
+.users-page {
+    position: relative;
+    width: 100%;
+
+   .users-title {}
+
+   .users-card-section{
+    padding-top: 30px;
+     width: 100%;
+     display: flex;
+     flex-direction: row;
+     gap: 40px;
+     flex-wrap: wrap;
+
+     .users-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        gap: 10px;
+        width: 20%;
+        min-width: 200px;
+        height: 150px;
+        padding: 15px 25px 15px 25px;
+        background: $white;
+        border-radius: 4px;
+        // box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+        .icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 100%;
+            padding: 12px;
+            background: $teal-light;
+        }
+        .title {
+            text-transform: uppercase;
+            font-size: 13px;
+            font-weight: 500;
+            color: $blue-light;
+        }
+        .value {
+            font-weight: 600;
+            font-size: 25px;
+        }
+
+     }
+   }
+   /**=========USERS PAGE TABLE======*/
+   .users-table-section {
+     display: flex;
+     flex-direction: column;
+     position: relative;
+     width: 100%;
+     margin-top: 40px;
+     padding: 10px 15px 10px 15px;
+     background: $white;
+     border-radius: 4px;
+
+     .table-header {
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        
+
+        .table-header-title {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: start;
+            gap: 5px;
+            flex-wrap: nowrap;
+            font-size: 13px;
+            text-transform: uppercase;
+            font-weight: 500;
+            cursor: pointer;
+        }
+     }
+
+    .table-main {
+        position: relative;
+        display: grid;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        width: 100%;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 20px;
+        border-radius: 5px;
+
+        .table-action-modal {
+            position: absolute;
+            right: -20px;
+            display: flex;
+            // padding: 10px;
+            flex-direction: column;
+            background: $white;
+            border-radius: 4px;
+            font-size: 14px;
+            text-transform: capitalize;
+            color: $blue-gray;
+            top: -60px;
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+            .action-modal {
+                display: flex;
+                gap: 5px;
+                align-items: center;
+                cursor: pointer;
+                padding: 10px 25px 12px 20px;
+
+                &:hover {
+                    background: $blue-lighter;
+                }
+                &:active {
+                  transform: scale(1.05);
+                  background: $blue-lighter;
+                }
+            }
+        }
+     }
+     .content {
+        color: $blue-light;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        flex-wrap: wrap;
+        font-size: 13px;
+        font-weight: 400;
+    
+     }
+     .status {
+        text-transform: capitalize;
+        background: $blue-lighter;
+        margin-right: auto;
+        padding-right: 10px;
+        padding-left: 10px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        border-radius: 10px;
+     }
+     .action {
+        position: absolute;
+        right: 10px;
+        cursor: pointer;
+        padding: 5px;
+        top: 3px;
+        transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+
+        &:hover {
+            display: flex;
+            width: auto;
+            justify-content: center;
+            align-items: center;
+            background: $blue-lighter;
+            border-radius: 100%;
+        }
+        &:active {
+            transform: scale(0.9);
+        }
+     }
+   }
+   .table-pagination {
+     display: flex;
+     width: 100%;
+     padding-top: 20px;
+     justify-content: space-between;
+     align-items: center;
+
+     .pagination-size {
+        display: flex;
+        gap: 10px;
+        font-size: 13px;
+        color: $blue-light;
+        align-items: center;
+
+        .pagination-select {
+            outline: none;
+            font-weight: 600;
+            background: $blue-lighter;
+            color: $blue;
+            border: none;
+            border-radius: 4px;
+            padding: 6px 10px 6px 10px;
+
+        }
+     }
+     .pagination-pages {
+        display: flex;
+        align-items: center;
+        font-size: 15px;
+        gap: 15px;
+
+        .pagination-icon {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            background: $blue-lighter;
+            border-radius: 4px;
+            padding: 2px;
+            cursor: pointer;
+        }
+     }
+   }
 }
