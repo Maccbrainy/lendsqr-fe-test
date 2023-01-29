@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { MdFilterList, MdMoreVert, MdNavigateBefore, MdNavigateNext, MdOutlineHowToReg, MdOutlinePersonOff, MdPeopleOutline, MdVisibility } from "react-icons/md";
 interface UsersCard {
     cardIcon: any,
@@ -16,6 +17,23 @@ const UsersCardAnalytics = ({cardIcon, cardTitle, cardValue}: UsersCard) => {
 }
 
 export default function TheUsersPage(){
+    const [isActionModalOpen, setIsActionModal] = useState<boolean>(false);
+    const openActionModal = () => {
+        setIsActionModal(true);
+    }
+    useEffect(() => {
+        const caughtOutSideClickAndCloseModal = () => {
+            setIsActionModal(false); 
+            
+            return () => {
+                window.removeEventListener('mousedown', caughtOutSideClickAndCloseModal)
+                window.removeEventListener('touchstart', caughtOutSideClickAndCloseModal)
+                }
+            }
+        window.addEventListener('mousedown', caughtOutSideClickAndCloseModal);
+        window.addEventListener('touchstart', caughtOutSideClickAndCloseModal);
+              
+    }, [isActionModalOpen])
     return (
         <div className="users-page">
             <h1 className="users-title">Users</h1>
@@ -59,22 +77,24 @@ export default function TheUsersPage(){
                     <span className="content">08145678901</span>
                     <span className="content">May 20, 2020 10:00AM</span>
                     <span className="content status">active</span>
-                    <div className="action"><MdMoreVert fontSize={20}/></div>
+                    <div onClick={openActionModal} className="action"><MdMoreVert fontSize={20}/></div>
 
-                    <div className="table-action-modal">
-                        <div className="action-modal">
-                            <MdVisibility fontSize={15}/>
-                            <span>View Details</span>
+                    {isActionModalOpen && 
+                        <div  className="table-action-modal">
+                            <div className="action-modal">
+                                <MdVisibility fontSize={15}/>
+                                <span>View Details</span>
+                            </div>
+                            <div className="action-modal">
+                                <MdOutlinePersonOff fontSize={15} />
+                                <span>Blacklist user</span>
+                            </div>
+                            <div className="action-modal">
+                                <MdOutlineHowToReg fontSize={15} />
+                                <span>Activate user</span>
+                            </div>
                         </div>
-                        <div className="action-modal">
-                            <MdOutlinePersonOff fontSize={15} />
-                            <span>Blacklist user</span>
-                        </div>
-                        <div className="action-modal">
-                            <MdOutlineHowToReg fontSize={15} />
-                            <span>Activate user</span>
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
             <div className="table-pagination">
