@@ -38,6 +38,22 @@ const router = createBrowserRouter(
                               {
                                 path:'documents',
                                 element: <UserDetailsDocuments />
+                              },
+                              {
+                                path:'bank-details',
+                                element: <UserDetailsDocuments />
+                              },
+                              {
+                                path:'loan',
+                                element: <UserDetailsDocuments />
+                              },
+                              {
+                                path:'savings',
+                                element: <UserDetailsDocuments />
+                              },
+                              {
+                                path:'app-and-systems',
+                                element: <UserDetailsDocuments />
                               }
                         ]
                     }
