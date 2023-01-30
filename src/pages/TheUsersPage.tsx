@@ -18,12 +18,26 @@ const UsersCardAnalytics = ({cardIcon, cardTitle, cardValue}: UsersCard) => {
 }
 
 export default function TheUsersPage(){
+    const actionModalRef = useRef() as MutableRefObject<HTMLDivElement>
     const [isActionModalOpen, setIsActionModal] = useState<boolean>(false);
+    const [usersList, setUsersList] = useState(JSON.parse(localStorage.getItem("ORGANIZATION_USERSLIST") || "[]"))
     const openActionModal = () => {
         setIsActionModal(true);
     }
-    const actionModalRef = useRef() as MutableRefObject<HTMLDivElement>
     const {pathname} = useLocation();
+    useEffect(() => {
+        const getUserLists = async() => {
+            await fetch(`https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users`)
+                .then(response => response.json())
+                .then((data) => {
+                    setUsersList(data)
+                    localStorage.setItem("ORGANIZATION_USERSLIST", JSON.stringify(data))
+                    console.log(data)
+                })
+                .catch(err => console.log(err))
+        };
+        getUserLists();
+    }, [])
     useEffect(() => {
         
         const caughtOutSideClickAndCloseModal = (event: { target: any }) => {
@@ -45,7 +59,7 @@ export default function TheUsersPage(){
         <div className={`users-page ${pathname == '/app/users' ? 'visible' : 'hidden'}`}>
             <h1 className="users-title">Users</h1>
             <div className="users-card-section">
-                <UsersCardAnalytics cardIcon={<MdPeopleOutline fontSize={25}/>} cardTitle={'Users'}  cardValue={2234}/>
+                <UsersCardAnalytics cardIcon={<MdPeopleOutline fontSize={25}/>} cardTitle={'Users'}  cardValue={usersList.length}/>
                 <UsersCardAnalytics cardIcon={<MdPeopleOutline fontSize={25}/>} cardTitle={'Active users'}  cardValue={2234}/>
                 <UsersCardAnalytics cardIcon={<MdPeopleOutline fontSize={25}/>} cardTitle={'Users with loans'}  cardValue={2234}/>
                 <UsersCardAnalytics cardIcon={<MdPeopleOutline fontSize={25}/>} cardTitle={'Users with savings'}  cardValue={2234}/>
