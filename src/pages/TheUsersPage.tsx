@@ -1,6 +1,7 @@
-import { Outlet } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { MdFilterList, MdMoreVert, MdNavigateBefore, MdNavigateNext, MdOutlineHowToReg, MdOutlinePersonOff, MdPeopleOutline, MdVisibility } from "react-icons/md";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { MutableRefObject, useEffect, useRef, useState } from "react";
+import { MdFilterList, MdMoreVert, MdNavigateBefore, MdNavigateNext, MdOutlineHowToReg, MdOutlinePersonOff, MdPeopleOutline } from "react-icons/md";
+import { HiOutlineEye } from "react-icons/hi2";
 interface UsersCard {
     cardIcon: any,
     cardTitle: string,
@@ -21,10 +22,15 @@ export default function TheUsersPage(){
     const openActionModal = () => {
         setIsActionModal(true);
     }
+    const actionModalRef = useRef() as MutableRefObject<HTMLDivElement>
+    const {pathname} = useLocation();
     useEffect(() => {
-        const caughtOutSideClickAndCloseModal = () => {
+        
+        const caughtOutSideClickAndCloseModal = (event: { target: any }) => {
+            if (actionModalRef.current && actionModalRef.current.contains(event.target)){
+                return;
+            }
             setIsActionModal(false); 
-            
             return () => {
                 window.removeEventListener('mousedown', caughtOutSideClickAndCloseModal)
                 window.removeEventListener('touchstart', caughtOutSideClickAndCloseModal)
@@ -35,7 +41,8 @@ export default function TheUsersPage(){
               
     }, [isActionModalOpen])
     return (
-        <div className="users-page">
+        <>
+        <div className={`users-page ${pathname == '/app/users' ? 'visible' : 'hidden'}`}>
             <h1 className="users-title">Users</h1>
             <div className="users-card-section">
                 <UsersCardAnalytics cardIcon={<MdPeopleOutline fontSize={25}/>} cardTitle={'Users'}  cardValue={2234}/>
@@ -80,11 +87,13 @@ export default function TheUsersPage(){
                     <div onClick={openActionModal} className="action"><MdMoreVert fontSize={20}/></div>
 
                     {isActionModalOpen && 
-                        <div  className="table-action-modal">
-                            <div className="action-modal">
-                                <MdVisibility fontSize={15}/>
-                                <span>View Details</span>
-                            </div>
+                        <div ref={actionModalRef} className="table-action-modal">
+                            <NavLink to={'/app/users/12'}>
+                                <div className="action-modal">
+                                    <HiOutlineEye fontSize={15}/>
+                                    <span>View Details</span>
+                                </div>
+                            </NavLink>
                             <div className="action-modal">
                                 <MdOutlinePersonOff fontSize={15} />
                                 <span>Blacklist user</span>
@@ -123,7 +132,8 @@ export default function TheUsersPage(){
                         
                     </div>
                 </div>
-            <Outlet />
         </div>
+        <Outlet />
+        </>
     )
 }
