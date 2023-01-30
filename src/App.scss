@@ -32,6 +32,7 @@
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 
     0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
+
 /*--------------------------------------------------------------
 # Variables Base
 --------------------------------------------------------------*/
@@ -41,6 +42,23 @@
     padding: 0;
   }
 
+  .visible {
+    visibility: visible;
+  }
+  .hidden {
+    display: none;
+  }
+  a {
+    color: $blue-gray;
+    text-decoration: none;
+    &.active {
+        text-decoration: none;  
+    }
+  }
+.horizontal-divider {
+    border: 1px solid $blue-lighter;
+    width: 100%;
+}
 .App {
     position: relative;
     background: $white;
@@ -156,8 +174,6 @@ TheUsersPage
     position: relative;
     width: 100%;
 
-   .users-title {}
-
    .users-card-section{
     padding-top: 30px;
      width: 100%;
@@ -178,7 +194,7 @@ TheUsersPage
         background: $white;
         border-radius: 4px;
         // box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-        box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        // box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 
         .icon {
             width: 50px;
@@ -258,7 +274,7 @@ TheUsersPage
             font-size: 14px;
             text-transform: capitalize;
             color: $blue-gray;
-            top: -60px;
+            top: -40px;
             box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 
             .action-modal {
@@ -360,4 +376,191 @@ TheUsersPage
         }
      }
    }
+}
+/**======================
+USERDETAILED PAGE
+========================**/
+.UserDetailsHero {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    gap: 30px;
+
+    .breadcrumb {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+    }
+
+    .detail-actions {
+        display: flex;
+        justify-content: space-between;
+
+        .actions-button {
+            display: flex;
+            gap: 1.5em;
+
+            button {
+                border-radius: 8px;
+                padding: 10px 25px 10px 25px;
+                outline: none;
+                cursor: pointer;
+                text-transform: uppercase;
+                font-size: 14px;
+                background: transparent;
+                font-weight: 500;
+                &:active {
+                    transform: scale(0.95);
+                }
+            }
+            .blacklist-user {
+                border: 1px solid $red;
+                color: $red;
+            }
+            .activate-user {
+                border: 1px solid $teal;
+                color: $teal;
+            }
+        }
+    }
+    .detail-hero {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background: $white;
+        border-radius: 6px;
+
+        .hero-summary {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            padding: 20px;
+
+            .profile-rating,
+            .profile-name,
+            .profile-value {
+                    display: flex;
+                    flex-direction: column;
+                }
+
+            .profile-detail {
+                display: flex;
+                gap: 20px;
+                align-items: center;
+
+                .profile-image {
+                    display: flex;
+                    justify-content: center;
+                    background: $blue-lighter;
+                    border-radius: 100%;
+                    padding: 25px;
+                }
+                .profile-name {
+                    .profile {
+                        font-size: 20px;
+                        font-weight: 500;
+                    }
+                    .profile-id {
+                        font-size: 16px;
+                        color: $blue-gray;
+                        font-weight: 400;
+                    }
+                }
+            }
+            .profile-rating {
+                padding: 20px;
+                border-left: 2px solid $blue-lighter;
+                border-right: 2px solid $blue-lighter;
+            }
+            .profile-value {
+                .amount {
+                    font-size: 20px;
+                    font-weight: 550;
+                }
+                .bank-id {
+                    font-size: 13px;
+                }
+            }
+        }
+
+        .detail-hero-navigation {
+            position: relative;
+            display: flex;
+            margin-top: 25px;
+            justify-content: space-around;
+            overflow-x: scroll;
+            gap: 10px;
+            font-size: 15px;
+            padding-bottom: 10px;
+            -ms-overflow-style: none;  /* Internet Explorer 10+ */
+            scrollbar-width: none;  /* Firefox */
+
+            .hero-link {
+                padding: 0px 10px 0px 10px;
+                position: relative;
+
+                &.active {
+                    color: $teal;
+                }
+                
+            }
+
+            &::-webkit-scrollbar { 
+                display: none;  /* Safari and Chrome */
+            }
+        }
+    }
+
+    .UserDetailsGeneralDetails {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        background: $white;
+        padding: 20px;
+        border-radius: 6px;
+        .details-section {
+            display: flex;
+            flex-direction: column;
+            .header-title {
+                font-size: 18px;
+                font-weight: 500;
+            }
+            .detailed-contact {
+                display: grid;
+                padding-top: 20px;
+                text-transform: uppercase;
+                color: $blue-gray;
+                gap: 20px;
+
+                .slot {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1px;
+
+                    .header-title {
+                        font-size: 12px;
+                    }
+                    .text {
+                        font-size: 16px;
+                        color: $blue-gray;
+                        font-weight: 550;
+                        text-transform: none;
+                    }
+                }
+            }
+            .personal-section{
+                grid-template-columns: repeat(5, minmax(0, 1fr));
+            }
+            .education-section, .guarantor-section {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+            .social-section {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+        
+        
+    }
+
 }
