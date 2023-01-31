@@ -1,8 +1,6 @@
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import NavBar from "../components/NavBar";
-// import { FaToolbox } from "react-icons/fa";
-import { ImHome } from "react-icons/im";
-import { HiUsers, HiUserGroup } from "react-icons/hi2";
+import { GuarantorIcon, HomeIcon, UsersListIcon } from "../assets/icons";
 
 export default function TheDashboardPage(){
     const { pathname } = useLocation();
@@ -18,7 +16,7 @@ export default function TheDashboardPage(){
                                 <div className={`nav-main ${pathname == '/app' && 'active'}`}>
                                 { pathname == '/app' && <div className="active-link"></div>}
                                     <div className="nav-link">
-                                        <ImHome/>
+                                        <HomeIcon/>
                                         <span>Dashboard</span>
                                     </div>
                                 </div>
@@ -30,14 +28,14 @@ export default function TheDashboardPage(){
                                 <div className={`nav-main ${pathname == '/app/users' && 'active'}`}>
                                 { pathname == '/app/users' && <div className="active-link"></div>}
                                     <div className="nav-link">
-                                        <HiUsers />
+                                        <UsersListIcon />
                                         <span>Users</span>
                                     </div>
                                 </div>
                             </NavLink>
                             <div className={`nav-main`}>
                                 <div className="nav-link">
-                                    <HiUserGroup />
+                                    <GuarantorIcon />
                                     <span>Guarantors</span>
                                 </div>
                             </div>

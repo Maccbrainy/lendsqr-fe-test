@@ -1,5 +1,6 @@
 import InputForm from "../components/InputForm";
-import LoginImage from "../assets/icons/login.svg"
+// import LoginImage from "../assets/icons/login.svg";
+import LoginWelcomeImage from "../assets/login-welcome-image.svg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 export default function TheLoginPage(){
@@ -37,7 +38,7 @@ export default function TheLoginPage(){
                 <div className="login-description">
                     <img className="login-logo" src={lendsqrLogoSource} alt="lendsqr logo" title="lendsqr" />
                     <div className="login-image">
-                        <img src={LoginImage} alt="Login image" title="Login" />
+                        <img src={LoginWelcomeImage} alt="Login image" title="Welcome Image" />
                     </div>
                 </div>
                 <div className="login-welcome-form">
