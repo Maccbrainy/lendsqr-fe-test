@@ -7,6 +7,8 @@ interface UsersCard {
     cardTitle: string,
     cardValue: number
 }
+
+//Users page card analytics  component
 const UsersCardAnalytics = ({cardIcon, cardTitle, cardValue}: UsersCard) => {
     return (
         <div className="users-card">
@@ -15,26 +17,40 @@ const UsersCardAnalytics = ({cardIcon, cardTitle, cardValue}: UsersCard) => {
             <div className="value">{cardValue}</div>
         </div>
     )
+};
+//Table Header Title component
+const TableHeaderTitle = ({headerTitle}: any) => {
+    return (
+        <div className="table-header-title">
+            <span>{ headerTitle }</span>
+            <MdFilterList fontSize={20}/>
+        </div>
+    )
 }
 
 export default function TheUsersPage(){
     const actionModalRef = useRef() as MutableRefObject<HTMLDivElement>
     const [isActionModalOpen, setIsActionModal] = useState<boolean>(false);
-    const [usersList, setUsersList] = useState(JSON.parse(localStorage.getItem("ORGANIZATION_USERSLIST") || "[]"))
+    const [usersList, setUsersList] = useState() //JSON.parse(localStorage.getItem("ORGANIZATION_USERSLIST") || "[]")
     const openActionModal = () => {
         setIsActionModal(true);
     }
     const {pathname} = useLocation();
+    // const [userData, setUserData]  = useState<any[]>([]);
+    const urlUsersListEnpoint = `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users`
+
     useEffect(() => {
         const getUserLists = async() => {
-            await fetch(`https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users`)
+            await fetch(urlUsersListEnpoint)
                 .then(response => response.json())
                 .then((data) => {
                     setUsersList(data)
-                    localStorage.setItem("ORGANIZATION_USERSLIST", JSON.stringify(data))
+                    // localStorage.setItem("ORGANIZATION_USERSLIST", JSON.stringify(data))
                     console.log(data)
                 })
-                .catch(err => console.log(err))
+                .catch(err => console.log(err));
+            console.log("usersList", usersList);
+            // console.log("newData", newData);
         };
         getUserLists();
     }, [])
@@ -59,66 +75,51 @@ export default function TheUsersPage(){
         <div className={`users-page ${pathname == '/app/users' ? 'visible' : 'hidden'}`}>
             <h1 className="users-title">Users</h1>
             <div className="users-card-section">
-                <UsersCardAnalytics cardIcon={<MdPeopleOutline fontSize={25}/>} cardTitle={'Users'}  cardValue={usersList.length}/>
+                <UsersCardAnalytics cardIcon={<MdPeopleOutline fontSize={25}/>} cardTitle={'Users'}  cardValue={123}/>
                 <UsersCardAnalytics cardIcon={<MdPeopleOutline fontSize={25}/>} cardTitle={'Active users'}  cardValue={2234}/>
                 <UsersCardAnalytics cardIcon={<MdPeopleOutline fontSize={25}/>} cardTitle={'Users with loans'}  cardValue={2234}/>
                 <UsersCardAnalytics cardIcon={<MdPeopleOutline fontSize={25}/>} cardTitle={'Users with savings'}  cardValue={2234}/>
             </div>
             <div className="users-table-section">
                 <div className="table-header">
-                    <div className="table-header-title">
-                        <span>Organization</span>
-                        <MdFilterList fontSize={20}/>
-                    </div>
-                    <div className="table-header-title">
-                        <span>Username</span>
-                        <MdFilterList fontSize={20}/>
-                    </div>
-                    <div className="table-header-title">
-                        <span>Email</span>
-                        <MdFilterList fontSize={20}/>
-                    </div>
-                    <div className="table-header-title">
-                        <span>Phone Number</span>
-                        <MdFilterList fontSize={20}/>
-                    </div>
-                    <div className="table-header-title">
-                        <span>Date Joined</span>
-                        <MdFilterList fontSize={20}/>
-                    </div>
-                    <div className="table-header-title">
-                        <span>Status</span>
-                        <MdFilterList fontSize={20}/>
-                    </div>
+                    <TableHeaderTitle headerTitle="Organization" />
+                    <TableHeaderTitle headerTitle="Username" />
+                    <TableHeaderTitle headerTitle="Email" />
+                    <TableHeaderTitle headerTitle="Phone Number" />
+                    <TableHeaderTitle headerTitle="Date Joined" />
+                    <TableHeaderTitle headerTitle="Status" />
                 </div>
-                <div className="table-main">
-                    <span className="content">Lendsqr</span>
-                    <span className="content">Adedeji</span>
-                    <span className="content">adedeji@Lendsqr.com</span>
-                    <span className="content">08145678901</span>
-                    <span className="content">May 20, 2020 10:00AM</span>
-                    <span className="content status">active</span>
-                    <div onClick={openActionModal} className="action"><MdMoreVert fontSize={20}/></div>
+                {
+                    
+                    <div className="table-main">
+                        <span className="content"></span>
+                        <span className="content"></span>
+                        <span className="content">JJJ</span>
+                        <span className="content">JJJ</span>
+                        <span className="content">JJJ</span>
+                        <span className="content status">active</span>
+                        <div onClick={openActionModal} className="action"><MdMoreVert fontSize={20}/></div>
 
-                    {isActionModalOpen && 
-                        <div ref={actionModalRef} className="table-action-modal">
-                            <NavLink to={'/app/users/12'}>
+                        {isActionModalOpen && 
+                            <div ref={actionModalRef} className="table-action-modal">
+                                <NavLink to={`/app/users/2`}>
+                                    <div className="action-modal">
+                                        <HiOutlineEye fontSize={15}/>
+                                        <span>View Details</span>
+                                    </div>
+                                </NavLink>
                                 <div className="action-modal">
-                                    <HiOutlineEye fontSize={15}/>
-                                    <span>View Details</span>
+                                    <MdOutlinePersonOff fontSize={15} />
+                                    <span>Blacklist user</span>
                                 </div>
-                            </NavLink>
-                            <div className="action-modal">
-                                <MdOutlinePersonOff fontSize={15} />
-                                <span>Blacklist user</span>
+                                <div className="action-modal">
+                                    <MdOutlineHowToReg fontSize={15} />
+                                    <span>Activate user</span>
+                                </div>
                             </div>
-                            <div className="action-modal">
-                                <MdOutlineHowToReg fontSize={15} />
-                                <span>Activate user</span>
-                            </div>
-                        </div>
-                    }
-                </div>
+                        }
+                    </div>
+                }
             </div>
             <div className="table-pagination">
                     <div className="pagination-size">

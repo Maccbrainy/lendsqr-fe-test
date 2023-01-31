@@ -1,18 +1,25 @@
 interface InputFormProps {
-    type: string,
-    name: string,
+    inputType: string,
+    inputName: string,
     value?: string,
     placeholder: string,
     handleChange: (event: {target: {name:string, value: string}}) => void,
     className?: string,
-    required?: boolean
+    required?: boolean,
+    warningClass?: string,
+    showPasswordHandle?: () => void
 }
 
-const InputForm = ({type, name, value, placeholder, handleChange, className, required }:InputFormProps) => {
+const InputForm = ({inputType, inputName, value, placeholder, handleChange, showPasswordHandle, className, warningClass, required }:InputFormProps) => {
     return(
-        <div className="w-full">
-            <input type={type} value={value} name={name} placeholder={placeholder} onChange={(event) => handleChange(event)} className={`${className}`} required/>
-            {required && <span className="flex-none">{placeholder} is required!</span>}
+        <div>
+            <div className={`input-login-container ${warningClass}`}>
+                <input type={inputType} value={value} name={inputName} placeholder={placeholder} onChange={(event) => handleChange(event)} className={`${className}`} required/>
+                {
+                  inputName == 'password' && <div onClick={showPasswordHandle} className="password-show">{ inputType == 'password' ? 'SHOW' : 'HIDE'}</div>
+                }
+            </div>
+            {required && <span className="input-data-warning">{placeholder} is required!</span>}
         </div>
     )
 }
