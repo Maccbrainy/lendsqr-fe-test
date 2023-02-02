@@ -1,16 +1,44 @@
-import { MdNotificationsNone } from "react-icons/md";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { ChevronDownIcon, NotificationIcon, SearchIcon } from "../assets/icons";
+import InputForm from "./InputForm";
+import profileImage from "../assets/profile-image.png"
 export default function NavBar(){
+    const lendsqrLogoSource = `https://www.lendsqr.com/assets/icons/header-logo.svg`;
+    const [searchData, setSearchData] = useState({
+        search: ""
+    })
+    const handleSearchFormChange = (event: { target: { name: string; value: string; }; }) => {
+        setSearchData((prevState) => ({...prevState, [event.target.name]:event.target.value}))
+    }
+    const submitSearchData = () => {
+        alert("submit search data");
+    }
     return (
-        <nav className="navigation-top-bar shadow-lg">
-            <div className="flex items-center flex-nowrap gap-10">
-                <span>Logo</span>
-                <span>Search Function</span>
+        <nav className="navigation-top-bar">
+            <div className="navbar-left">
+                <NavLink className="logo-link" to={'/'}>
+                    <img className="logo-size" title="Lendsqr logo" src={lendsqrLogoSource} alt="Lendsqr logo" />
+                </NavLink>
+                <div className="search-container">
+                    <InputForm className="search-input" inputType="text" inputName="search" placeholder="Search for something" handleChange={handleSearchFormChange} />
+                    <button onClick={submitSearchData} type="submit" title="Search button"><SearchIcon /></button>
+                </div>
             </div>
-            <div className="flex items-center justify-center flex-nowrap gap-10">
-                <span  className="underline cursor-pointer">Docs</span>
-                <MdNotificationsNone fontSize={25}/>
-                <span>Profile</span>
+            <div className="navbar-profile">
+                <span  className="nav-doc">Docs</span>
+                <NotificationIcon />
+                <div className="profile">
+                    <div className="profile-image">
+                        <img src={profileImage} alt="Profile image" />
+                    </div>
+                    <div className="profile-name">
+                        <span>Adedeji</span>
+                        <ChevronDownIcon />
+                    </div>
+                </div>
             </div>
+            <div className="mobile-menu">Menu</div>
         </nav>
     )
 }
