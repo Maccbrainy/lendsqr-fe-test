@@ -11,3 +11,6 @@ export { default as BlackListUserIcon} from "../icons/BlackListUserIcon.jsx";
 export { default as ActivateUserIcon} from "../icons/ActivateUserIcon.jsx";
 export { default as FilterViewIcon} from "../icons/FilterViewIcon.jsx";
 export { default as ViewMoreIcon} from "../icons/ViewMoreIcon.jsx";
+export { default as ChevronDownIcon} from "../icons/ChevronDownIcon.jsx";
+export { default as NotificationIcon} from "../icons/NotificationIcon.jsx";
+export { default as SearchIcon} from "../icons/SearchIcon.jsx";
