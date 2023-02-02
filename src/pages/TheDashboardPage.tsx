@@ -3,6 +3,7 @@ import NavBar from "../components/NavBar";
 import { GuarantorIcon, HomeIcon, UsersListIcon } from "../assets/icons";
 
 export default function TheDashboardPage(){
+    document.title = "Dashboard"
     const { pathname } = useLocation();
     return (
         <>

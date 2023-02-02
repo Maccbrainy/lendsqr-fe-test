@@ -4,6 +4,8 @@ import LoginWelcomeImage from "../assets/login-welcome-image.svg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 export default function TheLoginPage(){
+    //Title document
+    document.title = "Lendsqr: Log In";
     const lendsqrLogoSource = `https://www.lendsqr.com/assets/icons/header-logo.svg`;
 
     const navigate = useNavigate();
