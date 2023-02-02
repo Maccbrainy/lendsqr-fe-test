@@ -6,9 +6,14 @@ import {
 import router from './router'
 import App from './App'
 import './index.css'
+import { QueryClient, QueryClientProvider } from "react-query";
+// Create a react query client
+const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <App><RouterProvider router={router} /></App>
+    <QueryClientProvider client={queryClient}>
+      <App><RouterProvider router={router} /></App>
+    </QueryClientProvider>
   </React.StrictMode>,
 )
