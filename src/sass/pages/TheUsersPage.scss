@@ -1,0 +1,315 @@
+/**==========================
+TheUsersPage SCSS
+=============================
+**/
+.users-page {
+    position: relative;
+    width: 100%;
+
+   .users-card-section{
+    padding-top: 30px;
+     width: 100%;
+     display: flex;
+     flex-direction: row;
+     gap: 26px;
+     flex-wrap: wrap;
+
+     .users-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        gap: 10px;
+        // width: 20%;
+        width: 240px;
+        height: 160px;
+        min-width: 240px;
+        height: 150px;
+        padding: 15px 25px 15px 25px;
+        background: $white;
+        border-radius: 4px;
+        border: 1px solid rgba(33, 63, 125, 0.06);
+        box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+
+
+        .icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 100%;
+            padding: 15px;
+
+            &.no-of-users{
+               background: rgba(224, 24, 255, 0.1);
+            }
+            &.active-users{
+                background: rgba(86, 24, 255, 0.1);
+            }
+            &.users-with-loans {
+                background: rgba(245, 95, 68, 0.1); 
+            }
+            &.users-with-savings {
+                background: rgba(255, 51, 102, 0.1);  
+            }
+        }
+        .title {
+            text-transform: uppercase;
+            font-size: 13px;
+            font-weight: 500;
+            color: $blue-light;
+        }
+        .value {
+            font-weight: 600;
+            font-size: 25px;
+        }
+
+     }
+   }
+   /**=========USERS PAGE TABLE======*/
+   .users-table-section {
+     display: flex;
+     flex-direction: column;
+     position: relative;
+     width: 100%;
+     margin-top: 40px;
+     padding: 10px 15px 10px 15px;
+     background: $white;
+     border-radius: 4px;
+     border: 1px solid rgba(33, 63, 125, 0.06);
+     box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+
+     .table-header {
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        
+
+        .table-header-title {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: start;
+            gap: 5px;
+            flex-wrap: nowrap;
+            font-size: 13px;
+            text-transform: uppercase;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .table-filter-modal {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            left: 10px;
+            width: 270px;
+            background: $white;
+            background: #FFFFFF;
+            border: 1px solid rgba(84, 95, 125, 0.14);
+            box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+            border-radius: 4px;
+            padding: 25px;
+            color: $blue-gray;
+            z-index: 5;
+
+            .filter-button {
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 16px;
+                color: $blue-gray;
+
+                .input-filter {
+                    width: 100%;
+                    height: 40px;
+                    border: 2px solid $button-border;
+                    border-radius: 8px; 
+                    outline: none;
+                    padding: 0px 10px 0px 10px;
+                    color: $blue-light;
+                    font-size: 16px;
+                }
+            }
+            .filter-footer {
+                width: 100%;
+                display: flex;
+                padding-top: 8px;
+                justify-content: space-between;
+                gap: 15px;
+
+                button {
+                    border-radius: 8px;
+                    height: 40px;
+                    width: 100%;
+                    font-size: 16px;
+                    outline: none;
+                    cursor: pointer;
+                    transition: 0.2s ease-in;
+                    font-weight: 500;
+
+                    &:hover {
+                        transform: scale(1.05);
+                    }
+
+                    &.reset-button {
+                        border: 2px solid $blue-gray;
+                        background: $white;
+                        color: $blue-gray;
+                    }
+                    &.apply-button {
+                        border: 2px solid $teal;
+                        background: $teal;
+                        color: $white;
+                    }
+                }
+            }
+        }
+     }
+
+    .table-main {
+        position: relative;
+        display: grid;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        width: 100%;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 20px;
+        border-radius: 5px;
+
+        .table-action-modal {
+            position: absolute;
+            right: -20px;
+            display: flex;
+            flex-direction: column;
+            background: $white;
+            border-radius: 4px;
+            font-size: 14px;
+            text-transform: capitalize;
+            color: $blue-gray;
+            top: -40px;
+            border: 1px solid rgba(84, 95, 125, 0.04);
+            box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+            // transition: 0.2s ease-in;
+            z-index: 10;
+
+            .action-modal {
+                display: flex;
+                gap: 8px;
+                align-items: center;
+                cursor: pointer;
+                padding: 10px 25px 12px 20px;
+                transition: 0.2s ease-in;
+
+                &:hover {
+                    background: $blue-lighter;
+                }
+                &:active {
+                  transform: scale(1.05);
+                  background: $blue-lighter;
+                }
+            }
+        }
+     }
+     .content {
+        color: $blue-light;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        flex-wrap: wrap;
+        font-size: 13px;
+        font-weight: 400;
+
+        &.inactive,
+        &.pending,
+        &.active {
+            text-transform: capitalize;
+            margin-right: auto;
+            padding-right: 10px;
+            padding-left: 10px;
+            padding-top: 3px;
+            padding-bottom: 3px;
+            border-radius: 10px;
+        }
+
+        &.inactive {
+            color: $blue;
+            background: $blue-lighter;
+        }
+        &.pending {
+            background: rgba(233, 179, 0, 0.06);
+            color: rgb(233, 179, 0);
+        }
+        &.active {
+            background: rgba(57, 205, 99, 0.06);
+            color: #39CD62;
+        }
+     }
+     
+     .action {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        right: 10px;
+        cursor: pointer;
+        padding: 5px 11px 5px 11px;
+        top: 7px;
+        transition: 0.2s ease-in;
+
+        &:hover {
+            background: $blue-lighter;
+            border-radius: 100%;
+        }
+        &:active {
+            transform: scale(0.9);
+        }
+     }
+   }
+   .table-pagination {
+     display: flex;
+     width: 100%;
+     padding-top: 20px;
+     justify-content: space-between;
+     align-items: center;
+
+     .pagination-size {
+        display: flex;
+        gap: 10px;
+        font-size: 13px;
+        color: $blue-light;
+        align-items: center;
+
+        .pagination-select {
+            outline: none;
+            font-weight: 600;
+            background: $blue-lighter;
+            color: $blue;
+            border: none;
+            border-radius: 4px;
+            padding: 6px 10px 6px 10px;
+
+        }
+     }
+     .pagination-pages {
+        display: flex;
+        align-items: center;
+        font-size: 15px;
+        gap: 15px;
+
+        .pagination-icon {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            background: $blue-lighter;
+            border-radius: 4px;
+            padding: 2px;
+            cursor: pointer;
+        }
+     }
+   }
+}

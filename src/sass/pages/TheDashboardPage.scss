@@ -1,0 +1,145 @@
+/*--------------------------------------------------------------
+# Dashbord page scss
+--------------------------------------------------------------*/
+.dashboard-page {
+    position: relative;
+    width: 100%;
+
+    .dashboard-page-layout {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        width: 100%;
+        gap: 40px;
+        background: $white_normal;
+
+        @media (max-width: $xl) {
+            width: 100%;
+            flex-direction: column;
+        }
+
+        .dashboard-layout-sidebar {
+            position: relative;
+            width: 20%;
+            min-width: 283px;
+            height: auto;
+            background: $white;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);
+            margin-top: 75px;
+
+            @media (max-width: $xl) {
+                width: 100%;
+                min-width: 1366px;
+                display: flex;
+                align-items: center;
+                z-index: 10;
+                min-height: 0vh;
+            }
+            @media (min-width: $xl) {
+                min-height: 100vh;
+            }
+
+            .navbar-container {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                padding-top: 20px;
+                padding-bottom: 20px;
+
+                @media (max-width: $xl) {
+                    flex-direction: row;
+                    gap: 30px;
+                    align-items: center;
+                    padding: 0px 16px 10px 16px;
+                }
+                .nav-section {
+                    display: flex;
+                    flex-direction: column;
+                    padding-top: 15px;
+
+                    @media (max-width: $xl) {
+                        flex-direction: row;
+                        gap: 30px;
+                        align-items: center;
+                    }
+
+                    .nav-title {
+                        font-size: 13px;
+                        text-transform: uppercase;
+                        margin-left: 10%;
+                        padding-top: 8px;
+                        padding-bottom: 8px;
+
+                        @media (max-width: $xl) {
+                            display: none;
+                        }
+                    }
+                    .nav-main {
+                        width: 100%;
+                        color: $blue-light;
+                        display: flex;
+                        font-size: 14px;
+                        align-items: center;
+                        cursor: pointer;
+
+                        @media (max-width: $xl) {
+                            display: block;
+                        }
+    
+                            .active-link {
+                                position: absolute;
+                                width: 4px;
+                                height: 40px;
+                                background: $teal;
+
+                                @media (max-width: $xl) {
+                                    position: relative;
+                                    width: 100%;
+                                    height: 4px;
+                                    top: 40px;
+                                }
+                            }
+
+                        .nav-link {
+                            display: flex;
+                            flex-wrap: nowrap;
+                            align-items: center;
+                            gap: 0.5em;
+                            margin-left: 10%;
+                            height: 40px;
+                            padding-top: 6px;
+                            padding-bottom: 6px;
+
+                            @media (max-width: $xl) {
+                                width: 100%;
+                                height: 30px;
+                                padding-top: 0px;
+                                padding-bottom: 0px;
+                                margin-left: 0%;
+                            }
+                        }
+                        &:hover,
+                        &.active {
+                            background: $teal-light;
+                            @media (max-width: $xl) {
+                                background: transparent;
+                            }
+                        }
+                    }
+                }
+
+                
+            }
+        }
+        .dashboard-layout-mainbar{
+            width: 100%;
+            padding: 0em 1em 2em 1em;
+            position: relative;
+
+            @media (min-width: $xl) {
+                margin-top: 75px;
+                padding: 2em 1em 2em 1em;
+            }
+        }
+    }
+}
