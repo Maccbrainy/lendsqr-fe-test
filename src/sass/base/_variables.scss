@@ -14,5 +14,15 @@ $blue-gray: #545F7D;
 $white_normal: #fbfbfb;
 $white: #fff;
 
-$button-border: rgba(84, 95, 125, 0.15)
+$button-border: rgba(84, 95, 125, 0.15);
 
+/*-------------------------
+*  Media Queries
+*--------------------------*/
+$xs: 480px;
+$sm: 740px;
+$md: 991px;
+$lg: 1024px;
+$xl: 1280px;
+$xxl: 1700px;
+$maxl: 2000px;
