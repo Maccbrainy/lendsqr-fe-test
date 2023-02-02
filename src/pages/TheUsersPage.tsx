@@ -170,33 +170,34 @@ export default function TheUsersPage(){
                                 {  
                                     data.map((user: { id: string; orgName: string; userName: string; email: string; phoneNumber: string; createdAt: string; }, index:number) => 
                                     <div key={user.id + index} className="table-main">
-                                        <span className="content">{user.orgName}</span>
+                                        <span className="content organization">{user.orgName}</span>
                                         <span className="content">{user.userName}</span>
-                                        <span className="content">{user.email}</span>
+                                        <span className="content email">{user.email}</span>
                                         <span className="content">{user.phoneNumber}</span>
-                                        <span className="content">{user.createdAt?.toLocaleString()}</span>
-                                        <span className={`content`}>status</span>
-                                        <div onClick={() => openUserActionModal(user)} className="action"><ViewMoreIcon /></div>
-
-                                    {
-                                        isAUserInTheList.id == user.id && isAUserInTheList.phoneNumber == user.phoneNumber && isAUserInTheList.email == user.email &&
-                                            <div ref={actionModalRef} className="table-action-modal">
-                                                <NavLink to={`/app/users/${user.id}`}>
-                                                    <div className="action-modal">
-                                                        <ViewUserDetailsIcon />
-                                                        <span>View Details</span>
+                                        <span className="content">{user.createdAt}</span>
+                                        <div className={`content status-action`}>
+                                            <span>status</span>
+                                            <div onClick={() => openUserActionModal(user)} className="action"><ViewMoreIcon /></div>
+                                            {
+                                                isAUserInTheList.id == user.id && isAUserInTheList.phoneNumber == user.phoneNumber && isAUserInTheList.email == user.email &&
+                                                    <div ref={actionModalRef} className="table-action-modal">
+                                                        <NavLink to={`/app/users/${user.id}`}>
+                                                            <div className="action-modal">
+                                                                <ViewUserDetailsIcon />
+                                                                <span>View Details</span>
+                                                            </div>
+                                                        </NavLink>
+                                                        <div className="action-modal">
+                                                            <BlackListUserIcon />
+                                                            <span>Blacklist user</span>
+                                                        </div>
+                                                        <div className="action-modal">
+                                                            <ActivateUserIcon />
+                                                            <span>Activate user</span>
+                                                        </div>
                                                     </div>
-                                                </NavLink>
-                                                <div className="action-modal">
-                                                    <BlackListUserIcon />
-                                                    <span>Blacklist user</span>
-                                                </div>
-                                                <div className="action-modal">
-                                                    <ActivateUserIcon />
-                                                    <span>Activate user</span>
-                                                </div>
-                                            </div>
-                                        }
+                                                }
+                                        </div>
                                     </div>
                                 )
                             }
@@ -205,8 +206,6 @@ export default function TheUsersPage(){
                             <div className="pagination-size">
                                 <div>Showing</div>
                                     <select title="pagination range" className="pagination-select">
-                                        <option>20</option>
-                                        <option>50</option>
                                         <option>100</option>
                                     </select>
                                 <div>out of 100</div>
