@@ -17,9 +17,18 @@ USERDETAILED PAGE
         display: flex;
         justify-content: space-between;
 
+        @media (max-width: $sm){
+            align-items: center;
+            margin-top: -50px;
+        }
+
         .actions-button {
             display: flex;
             gap: 1.5em;
+
+            @media (max-width: $sm){
+                flex-direction: column;;
+            }
 
             button {
                 border-radius: 8px;
@@ -59,6 +68,10 @@ USERDETAILED PAGE
             gap: 40px;
             padding: 20px;
 
+            @media (max-width: $md){
+                flex-direction: column;
+            }
+
             .profile-rating,
             .profile-name,
             .profile-value {
@@ -71,14 +84,25 @@ USERDETAILED PAGE
                 gap: 20px;
                 align-items: center;
 
+                @media (max-width: $xs){
+                    flex-direction: column;
+                }
+
                 .profile-image {
                     width: 100%;
                     height: auto;
                     object-fit: cover;
                     object-position: center;
                     border-radius: 100%;
+
+                    @media (max-width: $xs){
+                        width: 120px;
+                    }
                 }
                 .profile-name {
+                    @media (max-width: $xs){
+                        align-items: center;
+                    }
                     .profile {
                         font-size: 20px;
                         font-weight: 500;
@@ -92,8 +116,13 @@ USERDETAILED PAGE
             }
             .profile-rating {
                 padding: 20px;
+                white-space: nowrap;
                 border-left: 2px solid $blue-lighter;
                 border-right: 2px solid $blue-lighter;
+
+                @media (max-width: $xs){
+                    border-right: none;
+                }
             }
             .profile-value {
                 .amount {
@@ -104,20 +133,33 @@ USERDETAILED PAGE
                     font-size: 13px;
                 }
             }
+            .profile-right-section {
+                display: flex;
+                gap: 20px;
+                align-items: center;
+
+                @media (max-width: $md){
+                    flex-direction: row-reverse;
+                }
+            }
         }
 
         .detail-hero-navigation {
             position: relative;
             display: flex;
-            flex-wrap: nowrap;
             margin-top: 25px;
             justify-content: space-around;
             overflow-x: auto;
             gap: 10px;
             font-size: 15px;
             padding-bottom: 10px;
+            white-space: nowrap;
             // -ms-overflow-style: none;  /* Internet Explorer 10+ */
             // scrollbar-width: none;  /* Firefox */
+
+            @media (max-width: $md){
+                justify-content: start;
+            }
 
             .hero-link {
                 padding: 0px 10px 0px 10px;
@@ -128,9 +170,9 @@ USERDETAILED PAGE
                 
             }
 
-            &::-webkit-scrollbar { 
-                display: none;  /* Safari and Chrome */
-            }
+            // &::-webkit-scrollbar { 
+            //     display: none;  /* Safari and Chrome */
+            // }
         }
     }
 
@@ -177,24 +219,30 @@ USERDETAILED PAGE
             .personal-section{
                 grid-template-columns: repeat(3, minmax(0, 1fr));
 
-                @media (max-width: $sm) {
-                    grid-template-columns: repeat(2, minmax(0, 1fr));
-                }
                 @media (min-width: $xxl) {
                     grid-template-columns: repeat(4, minmax(0, 1fr));
                 }
                 @media (min-width: $maxl) {
                     grid-template-columns: repeat(5, minmax(0, 1fr));
                 }
+                @media (max-width: $sm) {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+                @media (max-width: $xs) {
+                    grid-template-columns: repeat(1, minmax(0, 1fr));
+                }
             }
             .education-section, .guarantor-section {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
-
+                
+                @media (min-width: $maxl) {
+                    grid-template-columns: repeat(5, minmax(0, 1fr));
+                }
                 @media (min-width: $lg) {
                     grid-template-columns: repeat(3, minmax(0, 1fr));
                 }
-                @media (min-width: $maxl) {
-                    grid-template-columns: repeat(5, minmax(0, 1fr));
+                @media (max-width: $sm) {
+                    grid-template-columns: repeat(1, minmax(0, 1fr));
                 }
             }
             .social-section {

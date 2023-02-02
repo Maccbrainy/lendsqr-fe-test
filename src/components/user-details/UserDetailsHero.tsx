@@ -46,13 +46,15 @@ export default function UserDetailsHero(){
                                         <span className="profile-id">{data.accountNumber}</span>
                                     </div>
                                 </div>
-                                <div className="profile-rating">
-                                    <span>Users tiers</span>
-                                    <span className="rating">Ratings</span>
-                                </div>
-                                <div className="profile-value">
-                                    <div className="amount"> {`${data.profile.currency} ${data.accountBalance}`}</div>
-                                    <div className="bank-id">{`${data.profile.bvn}/${data.orgName}`}</div>
+                                <div className="profile-right-section">
+                                    <div className="profile-rating">
+                                        <span>Users tiers</span>
+                                        <span className="rating">Ratings</span>
+                                    </div>
+                                    <div className="profile-value">
+                                        <div className="amount"> {`${data.profile.currency} ${data.accountBalance}`}</div>
+                                        <div className="bank-id">{`${data.profile.bvn}/${data.orgName}`}</div>
+                                    </div>
                                 </div>
                             </div>
                             <div className="detail-hero-navigation">
