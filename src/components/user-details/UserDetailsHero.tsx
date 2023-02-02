@@ -14,7 +14,7 @@ export default function UserDetailsHero(){
     localStorage.setItem("LENDSQR_USERDETAIL", JSON.stringify(data))
 
     //Title document
-    document.title = `${data.profile.firstName} ${data.profile.lastName}`
+    document.title = `Lendsqr: User Details`
     return (
         <div className="UserDetailsHero">
             <NavLink to={'/app/users'} className="breadcrumb">
