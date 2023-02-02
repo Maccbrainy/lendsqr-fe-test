@@ -1,7 +1,21 @@
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import NavBar from "../components/NavBar";
-import { GuarantorIcon, HomeIcon, UsersListIcon } from "../assets/icons";
+import { BriefCaseIcon, DecisionModelIcon, GuarantorIcon, HomeIcon, KarmaIcon, LoanRequestIcon, LogoutIcon, SackBagIcon, SavingsIcon, UsersListIcon, WhiteListIcon } from "../assets/icons";
 
+interface NavigationProps {
+    navIcon: any,
+    navTitle: string
+}
+const DashboardNavLink = ({navIcon, navTitle}: NavigationProps) => {
+    return (
+        <div className="nav-main">
+            <div className="nav-link">
+                {navIcon}
+            <span>{navTitle}</span>
+            </div>
+        </div>
+    )
+}
 export default function TheDashboardPage(){
     document.title = "Dashboard"
     const { pathname } = useLocation();
@@ -34,14 +48,40 @@ export default function TheDashboardPage(){
                                     </div>
                                 </div>
                             </NavLink>
-                            <div className={`nav-main`}>
-                                <div className="nav-link">
-                                    <GuarantorIcon />
-                                    <span>Guarantors</span>
-                                </div>
-                            </div>
+                            <DashboardNavLink navIcon={<GuarantorIcon />} navTitle={"Guarantors"} />
+                            <DashboardNavLink navIcon={<SackBagIcon />} navTitle={"Loans"} />
+                            <DashboardNavLink navIcon={<DecisionModelIcon />} navTitle={"Decision Models"} />
+                            <DashboardNavLink navIcon={<SavingsIcon />} navTitle={"Savings"} />
+                            <DashboardNavLink navIcon={<LoanRequestIcon />} navTitle={"Loan Request"} />
+                            <DashboardNavLink navIcon={<WhiteListIcon />} navTitle={"Whitelist"} />
+                            <DashboardNavLink navIcon={<KarmaIcon />} navTitle={"Karma"} />
+                        </div>
+                        <div className="nav-section">
+                            <span className="nav-title">Businesses</span>
+                            <DashboardNavLink navIcon={<BriefCaseIcon />} navTitle={"Organization"} />
+                            <DashboardNavLink navIcon={<GuarantorIcon />} navTitle={"Loan Products"} />
+                            <DashboardNavLink navIcon={<GuarantorIcon />} navTitle={"Savings Products"} />
+                            <DashboardNavLink navIcon={<GuarantorIcon />} navTitle={"Fees and Charges"} />
+                            <DashboardNavLink navIcon={<GuarantorIcon />} navTitle={"Transactions"} />
+                            <DashboardNavLink navIcon={<GuarantorIcon />} navTitle={"Services"} />
+                            <DashboardNavLink navIcon={<GuarantorIcon />} navTitle={"Service Account"} />
+                            <DashboardNavLink navIcon={<GuarantorIcon />} navTitle={"Settlements"} />
+                            <DashboardNavLink navIcon={<GuarantorIcon />} navTitle={"Report"} />
+                        </div>
+                        <div className="nav-section">
+                            <span className="nav-title">Settings</span>
+                            <DashboardNavLink navIcon={<GuarantorIcon />} navTitle={"Preferences"} />
+                            <DashboardNavLink navIcon={<GuarantorIcon />} navTitle={"Fees and Pricing"} />
+                            <DashboardNavLink navIcon={<GuarantorIcon />} navTitle={"Audit Logs"} />
+                            <DashboardNavLink navIcon={<GuarantorIcon />} navTitle={"Systems Messages"} />
                         </div>
                     </nav>
+                    <div className="logout-section">
+                        <div className="logout">
+                            <LogoutIcon/>
+                            <span>Logout</span>
+                        </div>
+                    </div>
                 </div>
                 <div className="dashboard-layout-mainbar">
                     {
