@@ -26,7 +26,6 @@ export default function TheLoginPage(){
     const submitLoginInputData = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
         const {email, password} =  loginInputData;
-        console.log("inputData", loginInputData);
         
         if (!email || !password){
             setIsInputEmptyWarning(true)
@@ -45,6 +44,7 @@ export default function TheLoginPage(){
                 </div>
                 <div className="login-welcome-form">
                     <div  className="login-form">
+                        <img className="login-logo" src={lendsqrLogoSource} alt="lendsqr logo" title="lendsqr" />
                         <h1 className="login-title">Welcome!</h1>
                         <p>Enter details to login.</p>
                         <form className="form-fields">
