@@ -11,7 +11,7 @@ export default function TheDashboardPage(){
         <section className="dashboard-page">
             <div className="dashboard-page-layout">
                 <div className="dashboard-layout-sidebar">
-                    <nav className="flex flex-col">
+                    <nav className="navbar-container">
                         <div className="nav-section">
                             <NavLink to={'/app'}>
                                 <div className={`nav-main ${pathname == '/app' && 'active'}`}>
@@ -49,7 +49,7 @@ export default function TheDashboardPage(){
                         <div>
                             <h1>Dashboard Page</h1>
                             <p>Welcome there!</p>
-                            <p>I am so excited on this opportunity! Thank you so much. Looking forward to working with you. God bless!</p>
+                            <p>I am so excited on this opportunity! My sincere appreciation and gratitude. Thank you.</p>
                         </div>
                     }
                   <Outlet />
