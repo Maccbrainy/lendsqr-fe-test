@@ -40,7 +40,11 @@
             gap: 10px;
         }
         @media (min-width: $xl) {
-            gap: 50px;
+            gap: 150px;
+
+            .logo-size {
+                width: 150px;
+            }
         }
 
         .logo-link {
