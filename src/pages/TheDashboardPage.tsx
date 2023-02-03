@@ -1,6 +1,29 @@
 import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
-import { BriefCaseIcon, DecisionModelIcon, GuarantorIcon, HomeIcon, KarmaIcon, LoanRequestIcon, LogoutIcon, SackBagIcon, SavingsIcon, UsersListIcon, WhiteListIcon } from "../assets/icons";
+import { 
+    AuditLogsIcon, 
+    BriefCaseIcon, 
+    DecisionModelIcon, 
+    FeesAndChargesIcon, 
+    FeesAndPricingIcon, 
+    GuarantorIcon, 
+    HomeIcon, 
+    KarmaIcon, 
+    LoanRequestIcon, 
+    LogoutIcon, 
+    PreferencesIcon, 
+    ReportIcon, 
+    SackBagIcon, 
+    SavingsIcon, 
+    SavingsProductsIcon, 
+    ServiceAccountIcon, 
+    ServicesIcon, 
+    SettlementsIcon, 
+    SystemMessagesIcon, 
+    TransactionIcon, 
+    UsersListIcon, 
+    WhiteListIcon 
+} from "../assets/icons";
 
 interface NavigationProps {
     navIcon: any,
@@ -32,6 +55,12 @@ export default function TheDashboardPage(){
         <section className="dashboard-page">
             <div className="dashboard-page-layout">
                 <div className="dashboard-layout-sidebar">
+                        <div className="switch-organization">
+                            <BriefCaseIcon/>
+                            <select title="switch organization" className="switch-select">
+                                <option>Switch organization</option>
+                            </select>
+                        </div>
                     <nav className="navbar-container">
                         <div className="nav-section">
                             <NavLink to={'/app'}>
@@ -66,21 +95,21 @@ export default function TheDashboardPage(){
                         <div className="nav-section">
                             <span className="nav-title">Businesses</span>
                             <DashboardNavLink navIcon={<BriefCaseIcon />} navTitle={"Organization"} />
-                            <DashboardNavLink navIcon={<GuarantorIcon />} navTitle={"Loan Products"} />
-                            <DashboardNavLink navIcon={<GuarantorIcon />} navTitle={"Savings Products"} />
-                            <DashboardNavLink navIcon={<GuarantorIcon />} navTitle={"Fees and Charges"} />
-                            <DashboardNavLink navIcon={<GuarantorIcon />} navTitle={"Transactions"} />
-                            <DashboardNavLink navIcon={<GuarantorIcon />} navTitle={"Services"} />
-                            <DashboardNavLink navIcon={<GuarantorIcon />} navTitle={"Service Account"} />
-                            <DashboardNavLink navIcon={<GuarantorIcon />} navTitle={"Settlements"} />
-                            <DashboardNavLink navIcon={<GuarantorIcon />} navTitle={"Report"} />
+                            <DashboardNavLink navIcon={<LoanRequestIcon />} navTitle={"Loan Products"} />
+                            <DashboardNavLink navIcon={<SavingsProductsIcon />} navTitle={"Savings Products"} />
+                            <DashboardNavLink navIcon={<FeesAndChargesIcon />} navTitle={"Fees and Charges"} />
+                            <DashboardNavLink navIcon={<TransactionIcon />} navTitle={"Transactions"} />
+                            <DashboardNavLink navIcon={<ServicesIcon />} navTitle={"Services"} />
+                            <DashboardNavLink navIcon={<ServiceAccountIcon />} navTitle={"Service Account"} />
+                            <DashboardNavLink navIcon={<SettlementsIcon />} navTitle={"Settlements"} />
+                            <DashboardNavLink navIcon={<ReportIcon />} navTitle={"Report"} />
                         </div>
                         <div className="nav-section">
                             <span className="nav-title">Settings</span>
-                            <DashboardNavLink navIcon={<GuarantorIcon />} navTitle={"Preferences"} />
-                            <DashboardNavLink navIcon={<GuarantorIcon />} navTitle={"Fees and Pricing"} />
-                            <DashboardNavLink navIcon={<GuarantorIcon />} navTitle={"Audit Logs"} />
-                            <DashboardNavLink navIcon={<GuarantorIcon />} navTitle={"Systems Messages"} />
+                            <DashboardNavLink navIcon={<PreferencesIcon />} navTitle={"Preferences"} />
+                            <DashboardNavLink navIcon={<FeesAndPricingIcon />} navTitle={"Fees and Pricing"} />
+                            <DashboardNavLink navIcon={<AuditLogsIcon />} navTitle={"Audit Logs"} />
+                            <DashboardNavLink navIcon={<SystemMessagesIcon />} navTitle={"Systems Messages"} />
                         </div>
                     </nav>
                     <div className="logout-section">

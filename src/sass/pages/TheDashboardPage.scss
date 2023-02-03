@@ -171,6 +171,28 @@
                     display: none;
                 }
             }
+
+            .switch-organization {
+                display: flex;
+                margin-left: 10%;
+                align-items: center;
+                gap: 5px;
+                color: $blue-light;
+                padding-top: 40px;
+
+                @media (max-width: $xl) {
+                    margin-left: 10px;
+                    margin-top: -35px;
+                }
+
+                .switch-select {
+                    outline: none;
+                    border: none;
+                    color: $blue-light;
+                    font-size: 16px;
+                    font-weight: 400;
+                }
+            }
         }
         .dashboard-layout-mainbar{
             width: 100%;

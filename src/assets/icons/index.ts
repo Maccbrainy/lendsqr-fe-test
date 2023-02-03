@@ -21,3 +21,15 @@ export { default as WhiteListIcon} from "../icons/WhiteListIcon.jsx";
 export { default as LoanRequestIcon} from "../icons/LoanRequestIcon.jsx";
 export { default as DecisionModelIcon} from "../icons/DecisionModelIcon.jsx";
 export { default as SackBagIcon} from "../icons/SackBagIcon.jsx";
+export { default as SavingsProductsIcon} from "../icons/SavingsProductsIcon.jsx";
+export { default as FeesAndChargesIcon} from "../icons/FeesAndChargesIcon.jsx";
+export { default as TransactionIcon} from "../icons/TransactionIcon.jsx";
+export { default as ServicesIcon} from "../icons/ServicesIcon.jsx";
+export { default as ServiceAccountIcon} from "../icons/ServiceAccountIcon.jsx";
+export { default as SettlementsIcon} from "../icons/SettlementsIcon.jsx";
+export { default as ReportIcon} from "../icons/ReportIcon.jsx";
+export { default as SystemMessagesIcon} from "../icons/SystemMessagesIcon.jsx";
+export { default as AuditLogsIcon} from "../icons/AuditLogsIcon.jsx";
+export { default as FeesAndPricingIcon} from "../icons/FeesAndPricingIcon.jsx";
+export { default as PreferencesIcon} from "../icons/PreferencesIcon.jsx";
+
