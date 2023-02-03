@@ -139,7 +139,7 @@ export default function TheUsersPage(){
                                         <span className="content">{user.phoneNumber}</span>
                                         <span className="content">{user.createdAt}</span>
                                         <div className={`content status-action`}>
-                                            <span>status</span>
+                                            <span className="active">Active</span>
                                             <div onClick={() => openUserActionModal(user)} className="action"><ViewMoreIcon /></div>
                                             {//On clicking openUserActionModal,
                                             //Show a user action menu: view detail, blacklist user, and activate user 
