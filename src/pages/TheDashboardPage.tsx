@@ -1,4 +1,4 @@
-import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import { BriefCaseIcon, DecisionModelIcon, GuarantorIcon, HomeIcon, KarmaIcon, LoanRequestIcon, LogoutIcon, SackBagIcon, SavingsIcon, UsersListIcon, WhiteListIcon } from "../assets/icons";
 
@@ -19,6 +19,13 @@ const DashboardNavLink = ({navIcon, navTitle}: NavigationProps) => {
 export default function TheDashboardPage(){
     document.title = "Dashboard"
     const { pathname } = useLocation();
+    const navigate = useNavigate();
+
+    //Logout User function
+    const logoutUser = () => {
+        localStorage.removeItem("userPassword");
+        navigate("/");
+    }
     return (
         <>
         <NavBar/>
@@ -77,7 +84,7 @@ export default function TheDashboardPage(){
                         </div>
                     </nav>
                     <div className="logout-section">
-                        <div className="logout">
+                        <div onClick={logoutUser} className="logout">
                             <LogoutIcon/>
                             <span>Logout</span>
                         </div>
