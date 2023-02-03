@@ -1,12 +1,15 @@
 import { createBrowserRouter, redirect } from 'react-router-dom'
-import { UserDetailsHero, UserDetailsDocuments, UserDetailsGeneralDetails } from '../components/user-details'
-import { TheDashboardPage, TheLoginPage, TheUsersPage } from '../pages'
-// const protectedRoute = async () => {
-//     const isUserPassword = await localStorage.userPassword
-//     if (!isUserPassword) {
-//       return redirect("/");
-//     }
-//   }
+import { UserDetailsLanding, UserDetailsDocuments, UserDetailsGeneralDetails } from '../components/user-details'
+import { TheDashboardPage, TheLoginPage, TheUsersPage } from '../pages';
+
+//Redirect route on unauthorized access
+const protectedRoute =  async () => {
+    const isUserPassword = await localStorage.userPassword
+    if (!isUserPassword) {
+      return redirect("/");
+    }
+    return "";
+  }
 
 const router = createBrowserRouter(
   [
@@ -18,7 +21,7 @@ const router = createBrowserRouter(
       {
         path: '/app',
         element: <TheDashboardPage />,
-        // loader: protectedRoute,
+        loader: protectedRoute,
         id: 'dashboardPage',
         children: [
             {
@@ -28,7 +31,7 @@ const router = createBrowserRouter(
                 children: [
                     {
                         path:':userId',
-                        element: <UserDetailsHero />,
+                        element: <UserDetailsLanding />,
                         id: 'userDetailPage',
                         children: [
                             {
