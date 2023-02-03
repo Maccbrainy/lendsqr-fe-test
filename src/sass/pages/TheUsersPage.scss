@@ -91,7 +91,12 @@ TheUsersPage SCSS
      border-radius: 4px;
      border: 1px solid rgba(33, 63, 125, 0.06);
      box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
-     overflow-x: auto;
+     overflow: visible;
+
+     @media (max-width: $md) {
+        width: 100%;
+        overflow: auto;
+    }
 
      &::-webkit-scrollbar {
         width: 6px;
@@ -108,11 +113,14 @@ TheUsersPage SCSS
      .table-header {
         display: grid;
         width: 100%;
-        grid-template-columns: repeat(6, minmax(250px, 1fr));
+        grid-template-columns: repeat(6, minmax(100px, 1fr));
         gap: 20px;
         padding-top: 10px;
         padding-bottom: 10px;
-        
+
+        @media (max-width: $md) {
+            grid-template-columns: repeat(6, minmax(150px, 1fr));
+        }
 
         .table-header-title {
             display: flex;
@@ -205,48 +213,25 @@ TheUsersPage SCSS
         padding-top: 8px;
         padding-bottom: 8px;
         width: 100%;
-        grid-template-columns: repeat(6, minmax(250px, 1fr));
+        grid-template-columns: repeat(6, minmax(100px, 1fr));
         gap: 20px;
         border-radius: 5px;
+        align-items: center;
 
-        // .table-action-modal {
-        //     position: absolute;
-        //     right: -40em;
-        //     display: flex;
-        //     flex-direction: column;
-        //     background: $white;
-        //     border-radius: 4px;
-        //     font-size: 14px;
-        //     text-transform: capitalize;
-        //     color: $blue-gray;
-        //     top: -40px;
-        //     border: 1px solid rgba(84, 95, 125, 0.04);
-        //     box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
-        //     // transition: 0.2s ease-in;
-        //     z-index: 5;
+        &:not(:last-child){
+            border-bottom: 1px solid $button-border;
+            border-radius: 0px;
+            width: 100%;
+        }
 
-        //     .action-modal {
-        //         display: flex;
-        //         gap: 8px;
-        //         align-items: center;
-        //         cursor: pointer;
-        //         padding: 10px 25px 12px 20px;
-        //         transition: 0.2s ease-in;
+        @media (max-width: $md) {
+            grid-template-columns: repeat(6, minmax(150px, 1fr));
+        }
 
-        //         &:hover {
-        //             background: $blue-lighter;
-        //         }
-        //         &:active {
-        //           transform: scale(1.05);
-        //           background: $blue-lighter;
-        //         }
-        //     }
-        // }
      }
      .content {
         color: $blue-light;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        white-space: pre-wrap;
         flex-wrap: wrap;
         font-size: 13px;
         font-weight: 400;
@@ -256,13 +241,14 @@ TheUsersPage SCSS
         }
         &.email {
             text-transform: lowercase;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         &.status-action {
             position: relative;
             display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            gap: 70px;
+            flex-wrap: nowrap;
+            gap: 40px;
 
             .action {
                 display: flex;
@@ -283,7 +269,7 @@ TheUsersPage SCSS
              }
              .table-action-modal {
                 position: absolute;
-                right: 0em;
+                right: -2em;
                 display: flex;
                 flex-direction: column;
                 background: $white;
@@ -316,11 +302,10 @@ TheUsersPage SCSS
             }
         }
 
-        &.inactive,
-        &.pending,
-        &.active {
+        .inactive,
+        .pending,
+        .active {
             text-transform: capitalize;
-            margin-right: auto;
             padding-right: 10px;
             padding-left: 10px;
             padding-top: 3px;
@@ -328,15 +313,15 @@ TheUsersPage SCSS
             border-radius: 10px;
         }
 
-        &.inactive {
+        .inactive {
             color: $blue;
             background: $blue-lighter;
         }
-        &.pending {
+        .pending {
             background: rgba(233, 179, 0, 0.06);
             color: rgb(233, 179, 0);
         }
-        &.active {
+        .active {
             background: rgba(57, 205, 99, 0.06);
             color: #39CD62;
         }

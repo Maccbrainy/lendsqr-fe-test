@@ -154,8 +154,8 @@ USERDETAILED PAGE
             font-size: 15px;
             padding-bottom: 10px;
             white-space: nowrap;
-            // -ms-overflow-style: none;  /* Internet Explorer 10+ */
-            // scrollbar-width: none;  /* Firefox */
+            -ms-overflow-style: none;  /* Internet Explorer 10+ */
+            scrollbar-width: none;  /* Firefox */
 
             @media (max-width: $md){
                 justify-content: start;
@@ -170,9 +170,9 @@ USERDETAILED PAGE
                 
             }
 
-            // &::-webkit-scrollbar { 
-            //     display: none;  /* Safari and Chrome */
-            // }
+            &::-webkit-scrollbar { 
+                display: none;  /* Safari and Chrome */
+            }
         }
     }
 
