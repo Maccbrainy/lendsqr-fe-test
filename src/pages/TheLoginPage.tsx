@@ -1,21 +1,19 @@
-import InputForm from "../components/InputForm";
-// import LoginImage from "../assets/icons/login.svg";
-import LoginWelcomeImage from "../assets/login-welcome-image.svg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import InputForm from "../components/InputForm";
+import LoginWelcomeImage from "../assets/login-welcome-image.svg";
 export default function TheLoginPage(){
     //Title document
     document.title = "Lendsqr: Log In";
-    const lendsqrLogoSource = `https://www.lendsqr.com/assets/icons/header-logo.svg`;
-
     const navigate = useNavigate();
-
     const [loginInputData, setLoginInputData] = useState<{email:string,password: string}>({
         email: "",
         password: ""
     });
     const [isInputEmptyWarning, setIsInputEmptyWarning] = useState<boolean>(false);
     const [showPassword, setShowPassword] = useState<boolean>(false);
+    //Logo source
+    const lendsqrLogoSource = `https://www.lendsqr.com/assets/icons/header-logo.svg`;
 
     const handleChange = (event: { target: { name: string; value: string; }; }) => {
         setLoginInputData((prevState) => ({...prevState, [event.target.name]: event.target.value}))
@@ -31,6 +29,7 @@ export default function TheLoginPage(){
             setIsInputEmptyWarning(true)
             return;
         }
+        localStorage.userPassword = password
         navigate("/app");
     }
     return (
