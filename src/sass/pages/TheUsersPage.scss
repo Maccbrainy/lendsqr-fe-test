@@ -210,13 +210,13 @@ TheUsersPage SCSS
     .table-main {
         position: relative;
         display: grid;
-        padding-top: 8px;
-        padding-bottom: 8px;
         width: 100%;
         grid-template-columns: repeat(6, minmax(100px, 1fr));
         gap: 20px;
         border-radius: 5px;
         align-items: center;
+        padding: 8px 3px;
+        transition: 0.2s ease-in;
 
         &:not(:last-child){
             border-bottom: 1px solid $button-border;
@@ -227,6 +227,13 @@ TheUsersPage SCSS
         @media (max-width: $md) {
             grid-template-columns: repeat(6, minmax(150px, 1fr));
         }
+        @media (min-width: $md) {
+            &:hover {
+                background: $teal-light;
+            }
+        }
+
+        
 
      }
      .content {
@@ -292,7 +299,7 @@ TheUsersPage SCSS
                     transition: 0.2s ease-in;
     
                     &:hover {
-                        background: $blue-lighter;
+                        background: $teal-light;
                     }
                     &:active {
                       transform: scale(1.05);
