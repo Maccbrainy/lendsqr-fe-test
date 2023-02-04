@@ -12,8 +12,8 @@
     <img src="https://i.ibb.co/ssz6hHN/Lendsqr-users-List-Page.jpg" alt="Lendsqr-fe-test users list page">
     <img src="https://i.ibb.co/xjyN1vD/Lendsqr-user-Detailed-Page.jpg" alt="Lendsqr-fe-test user detailed page">
 </div>
-
 <br>
+<p>This project is bootstrapped with <a href="https://vitejs.dev/">ViteJs</a></p>
 This project repository contains the following code bases tools:
 
 | Directory | Code Base |
