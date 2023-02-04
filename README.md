@@ -13,8 +13,8 @@
     <img src="https://i.ibb.co/xjyN1vD/Lendsqr-user-Detailed-Page.jpg" alt="Lendsqr-fe-test user detailed page">
 </div>
 
-
-This repository contains the following code bases tools:
+<br>
+This project repository contains the following code bases tools:
 
 | Directory | Code Base |
 |-----------|-----------|
