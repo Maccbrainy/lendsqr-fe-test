@@ -149,9 +149,11 @@
                         cursor: pointer;
                         transition: 0.2s ease-in;
 
-                        &:hover,
-                        &:active {
+                        &:hover {
                             transform: scale(1.05);
+                        }
+                        &:active {
+                            transform: scale(1);
                         }
                     }
 
