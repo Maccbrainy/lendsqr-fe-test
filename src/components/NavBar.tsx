@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import { ChevronDownIcon, NotificationIcon, SearchIcon } from "../assets/icons";
 import InputForm from "./InputForm";
 import profileImage from "../assets/profile-image.png"
+import { MdDehaze } from "react-icons/md";
+
 export default function NavBar(){
     const lendsqrLogoSource = `https://www.lendsqr.com/assets/icons/header-logo.svg`;
     const [searchData, setSearchData] = useState({
@@ -38,7 +40,7 @@ export default function NavBar(){
                     </div>
                 </div>
             </div>
-            <div className="mobile-menu">Menu</div>
+            <div className="mobile-menu"><MdDehaze fontSize={25}/></div>
         </nav>
     )
 }
