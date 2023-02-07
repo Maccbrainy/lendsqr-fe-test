@@ -49,6 +49,23 @@ export default function TheDashboardPage(){
         localStorage.removeItem("userPassword");
         navigate("/");
     }
+    const scrollDashboardNavigationBar = (direction: string) => {
+        //Get the children inside this container;
+        const { children } = navBarContainerRef.current;
+        //Get the clientWidth of the first child
+        const clientWidthOfFirstElement = children[0].clientWidth;
+        /**
+         * Scroll the overflow content of the nav container by the size of the clientWidth of the first child element 
+         * which is the const scrollIndex;
+         * 
+         */
+        const scrollIndex = direction == "forward" ? (clientWidthOfFirstElement) : -(clientWidthOfFirstElement)
+        navBarContainerRef.current.scrollBy({
+           top: 0,
+           left: scrollIndex,
+           behavior: "smooth" 
+        })
+    }
     return (
         <>
         <NavBar/>
@@ -112,6 +129,14 @@ export default function TheDashboardPage(){
                             <DashboardNavLink navIcon={<SystemMessagesIcon />} navTitle={"Systems Messages"} />
                         </div>
                     </nav>
+                    <div className="navigation-button">
+                        <div title="navigate forward" onClick={() => scrollDashboardNavigationBar("forward")} className="button-forward">
+                            <MdChevronRight fontSize={25} />
+                        </div>
+                        <div title="navigate backward" onClick={() => scrollDashboardNavigationBar("backward")} className="button-backward">
+                            <MdChevronLeft fontSize={25} />
+                        </div>
+                    </div>
                     <div className="logout-section">
                         <div onClick={logoutUser} className="logout">
                             <LogoutIcon/>

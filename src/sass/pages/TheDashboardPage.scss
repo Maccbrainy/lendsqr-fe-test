@@ -151,8 +151,44 @@
                     }
                 }
 
-                
             }
+            .navigation-button {
+
+                .button-forward, .button-backward {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: absolute;
+                    background: $white;
+                    border: 1px solid rgba(33, 63, 125, 0.06);
+                    border-radius: 100%;
+                    width: 30px;
+                    height: 30px;
+                    top: 18px;
+                    cursor: pointer;
+                    
+                    transition: 0.2s ease-in;
+                
+                        &:hover {
+                            transform: scale(1.05);
+                        }
+                        &:active {
+                            transform: scale(0.95);
+                        }
+                    @media (min-width: $xl) {
+                        display: none;
+            }
+                }
+                .button-forward {
+                    right: 3px;
+                    box-shadow: 18px 4px 18px $white;
+                }
+                .button-backward {
+                    left: 13rem;
+                    box-shadow: -18px 4px 18px $white;
+                }
+            } 
+            
             .logout-section {
                 border-top: 1px solid $blue-lighter;
                 width: 100%;
