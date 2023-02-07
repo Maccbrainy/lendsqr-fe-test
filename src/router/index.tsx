@@ -1,6 +1,7 @@
 import { createBrowserRouter, redirect } from 'react-router-dom'
-import { UserDetailsLanding, UserDetailsDocuments, UserDetailsGeneralDetails } from '../components/user-details'
+import { UserDetailsDocuments, UserDetailsGeneralDetails } from '../components/user-details'
 import { TheDashboardPage, TheLoginPage, TheUsersPage } from '../pages';
+import { UserDetails } from '../subpages';
 
 //Redirect route on unauthorized access
 const protectedRoute =  async () => {
@@ -31,7 +32,7 @@ const router = createBrowserRouter(
                 children: [
                     {
                         path:':userId',
-                        element: <UserDetailsLanding />,
+                        element: <UserDetails />,
                         id: 'userDetailPage',
                         children: [
                             {
