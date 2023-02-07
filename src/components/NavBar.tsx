@@ -4,19 +4,30 @@ import { ChevronDownIcon, NotificationIcon, SearchIcon } from "../assets/icons";
 import InputForm from "./InputForm";
 import profileImage from "../assets/profile-image.png"
 import { MdDehaze } from "react-icons/md";
+import MobileMenu from "./MobileMenu";
 
 export default function NavBar(){
     const lendsqrLogoSource = `https://www.lendsqr.com/assets/icons/header-logo.svg`;
+    //Search form data state declaration
     const [searchData, setSearchData] = useState({
         search: ""
     })
+    //Mobile menu state declaration
+    const [isMobileMenu, setIsMobileMenu] = useState<boolean>(false);
+    //Search form data state on change
     const handleSearchFormChange = (event: { target: { name: string; value: string; }; }) => {
         setSearchData((prevState) => ({...prevState, [event.target.name]:event.target.value}))
     }
+    //Search bar function
     const submitSearchData = () => {
         alert("submit search data");
     }
+    //Open Mobile menu function
+    const openMobileMenu = () => {
+        isMobileMenu ? setIsMobileMenu(false) : setIsMobileMenu(true)
+    }
     return (
+        <>
         <nav className="navigation-top-bar">
             <div className="navbar-left">
                 <NavLink className="logo-link" to={'/'}>
@@ -40,7 +51,11 @@ export default function NavBar(){
                     </div>
                 </div>
             </div>
-            <div className="mobile-menu"><MdDehaze fontSize={25}/></div>
+            <div onClick={openMobileMenu} className="mobile-menu"><MdDehaze fontSize={25}/></div>
         </nav>
+        {
+            isMobileMenu && (<MobileMenu closeMobileMenuHandler={() => setIsMobileMenu(false)}/>)
+        }
+    </>
     )
 }
