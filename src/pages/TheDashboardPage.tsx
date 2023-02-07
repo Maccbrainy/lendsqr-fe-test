@@ -1,4 +1,6 @@
+import { MutableRefObject, useRef } from "react";
 import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { useInView } from 'react-intersection-observer';
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import NavBar from "../components/NavBar";
 import { 
@@ -25,7 +27,6 @@ import {
     UsersListIcon, 
     WhiteListIcon 
 } from "../assets/icons";
-import { MutableRefObject, useRef } from "react";
 
 interface NavigationProps {
     navIcon: any,
@@ -42,18 +43,31 @@ const DashboardNavLink = ({navIcon, navTitle}: NavigationProps) => {
     )
 }
 export default function TheDashboardPage(){
-    document.title = "Dashboard"
+    document.title = "Dashboard";
     const { pathname } = useLocation();
     const navigate = useNavigate();
-    //The ref content of the navigation bar container
-    //persist values between renders.
-    // store a mutable value that does not cause a re-render when updated
+    /**
+     * The ref content of the navigation bar container
+     * persist values between renders.
+     * store a mutable value that does not cause a re-render when updated
+     */
     const navBarContainerRef = useRef() as MutableRefObject<HTMLDivElement>
     //Logout User function
     const logoutUser = () => {
         localStorage.removeItem("userPassword");
         navigate("/");
     }
+    /**
+     *  Intersection Observer to tell you when an element enters or 
+     * leaves the viewport. Detecting visibility of an element.
+     * @useInView()
+     * target elements: 1st child & last child of the navbar-container
+     */
+    const { ref, inView } = useInView({
+        /* Optional options */
+        threshold: 1,
+      });
+
     const scrollDashboardNavigationBar = (direction: string) => {
         //Get the children inside this container;
         const { children } = navBarContainerRef.current;
@@ -86,7 +100,7 @@ export default function TheDashboardPage(){
                     <nav ref={navBarContainerRef} className="navbar-container">
                         <div className="nav-section">
                             <NavLink to={'/app'}>
-                                <div className={`nav-main ${pathname == '/app' && 'active'}`}>
+                                <div ref={ref} className={`nav-main ${pathname == '/app' && 'active'}`}>
                                 { pathname == '/app' && <div className="active-link"></div>}
                                     <div className="nav-link">
                                         <HomeIcon/>
@@ -138,9 +152,14 @@ export default function TheDashboardPage(){
                         <div title="navigate forward" onClick={() => scrollDashboardNavigationBar("forward")} className="button-forward">
                             <MdChevronRight fontSize={25} />
                         </div>
-                        <div title="navigate backward" onClick={() => scrollDashboardNavigationBar("backward")} className="button-backward">
-                            <MdChevronLeft fontSize={25} />
-                        </div>
+                        {
+                            !inView && (
+                                <div title="navigate backward" onClick={() => scrollDashboardNavigationBar("backward")} className="button-backward">
+                                    <MdChevronLeft fontSize={25} />
+                                </div>
+                            )
+                        }
+                        
                     </div>
                     <div className="logout-section">
                         <div onClick={logoutUser} className="logout">
