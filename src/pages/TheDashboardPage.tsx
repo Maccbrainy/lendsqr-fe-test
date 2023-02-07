@@ -24,6 +24,7 @@ import {
     UsersListIcon, 
     WhiteListIcon 
 } from "../assets/icons";
+import { MutableRefObject, useRef } from "react";
 
 interface NavigationProps {
     navIcon: any,
@@ -43,7 +44,10 @@ export default function TheDashboardPage(){
     document.title = "Dashboard"
     const { pathname } = useLocation();
     const navigate = useNavigate();
-
+    //The ref content of the navigation bar container
+    //persist values between renders.
+    // store a mutable value that does not cause a re-render when updated
+    const navBarContainerRef = useRef() as MutableRefObject<HTMLDivElement>
     //Logout User function
     const logoutUser = () => {
         localStorage.removeItem("userPassword");
@@ -78,7 +82,7 @@ export default function TheDashboardPage(){
                                 <option>Switch organization</option>
                             </select>
                         </div>
-                    <nav className="navbar-container">
+                    <nav ref={navBarContainerRef} className="navbar-container">
                         <div className="nav-section">
                             <NavLink to={'/app'}>
                                 <div className={`nav-main ${pathname == '/app' && 'active'}`}>
