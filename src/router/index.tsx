@@ -1,6 +1,6 @@
 import { createBrowserRouter, redirect } from 'react-router-dom'
 import App from '../App';
-import { UserDetailsDocuments, UserDetailsGeneralDetails } from '../components/user-details'
+import { UserDetailsAppAndSystem, UserDetailsBankDetails, UserDetailsDocuments, UserDetailsGeneralDetails, UserDetailsLoan, UserDetailsSavings } from '../components/user-details'
 import { TheDashboardPage, TheLoginPage, TheUsersPage } from '../pages';
 import { UserDetails } from '../subpages';
 
@@ -46,19 +46,19 @@ const router = createBrowserRouter(
                       },
                       {
                         path:'bank-details',
-                        element: <UserDetailsDocuments />
+                        element: <UserDetailsBankDetails />
                       },
                       {
                         path:'loan',
-                        element: <UserDetailsDocuments />
+                        element: <UserDetailsLoan />
                       },
                       {
                         path:'savings',
-                        element: <UserDetailsDocuments />
+                        element: <UserDetailsSavings />
                       },
                       {
                         path:'app-and-systems',
-                        element: <UserDetailsDocuments />
+                        element: <UserDetailsAppAndSystem />
                       }
                 ]
             }
