@@ -1,2 +1,6 @@
 export { default as UserDetailsDocuments} from './UserDetailsDocuments'
 export { default as UserDetailsGeneralDetails} from './UserDetailsGeneralDetails'
+export { default as UserDetailsAppAndSystem} from './UserDetailsAppAndSystem'
+export { default as UserDetailsBankDetails} from './UserDetailsBankDetails'
+export { default as UserDetailsSavings} from './UserDetailsSavings'
+export { default as UserDetailsLoan} from './UserDetailsLoan'
