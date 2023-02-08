@@ -98,7 +98,7 @@ export default function TheUsersPage(){
     return (
         
         <>
-        <div className={`users-page ${pathname == '/app/users' ? 'visible' : 'hidden'}`}>
+        <div className={`users-page ${pathname == '/users' ? 'visible' : 'hidden'}`}>
             <h1 className="users-title">Users</h1>
             {
                 status === "error" && <p className="error-message-fetching-data">Error fetching data</p>
