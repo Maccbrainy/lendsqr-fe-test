@@ -7,7 +7,7 @@ interface UserProps {
 const TableActionsViewModal = forwardRef(({user }:UserProps, ref:ForwardedRef<HTMLDivElement>) => {
     return (
         <div ref={ref} className="table-action-modal">
-            <NavLink to={`/app/users/${user.id}`}>
+            <NavLink to={`/users/${user.id}/general-details`}>
                 <div className="action-modal">
                     <ViewUserDetailsIcon />
                     <span>View Details</span>
