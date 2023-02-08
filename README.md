@@ -2,7 +2,7 @@
 ## <a href="https://iketaku-chinedu-lendsqr-fe-test.vercel.app" target="_blank">Live Demo</a>
 
 ## Project Description.
-<p>This is a test assessment for front-end engineering candidates at Lendsqr (A company that provides lending as a service solution across Africa and beyond)</p> <br>
+<p>This is a test assessment for front-end engineering role at Lendsqr (A company that provides lending as a service solution across Africa, LAAS)</p> <br>
 <p>This project is a build of four(4) paged responsive app: login page, dashboard page, users page and the users detailed page</p>
 <p>The users page and the user detailed page pulls data from a mock api and the user detailed data saved in the localStorage for further consumption</p>
 <p>Screen shots below</p>
