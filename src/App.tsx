@@ -4,7 +4,6 @@ import './App.scss'
 import NavBar from './components/NavBar'
 import AppNavigationSidebar from './components/AppNavigationSidebar'
 import { TheLoginPage } from './pages'
-import { useEffect } from 'react'
 // interface Props {
 //   children?:ReactNode
 //   // any props that come into the component
