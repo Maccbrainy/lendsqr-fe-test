@@ -1,4 +1,5 @@
 import { createBrowserRouter, redirect } from 'react-router-dom'
+import App from '../App';
 import { UserDetailsDocuments, UserDetailsGeneralDetails } from '../components/user-details'
 import { TheDashboardPage, TheLoginPage, TheUsersPage } from '../pages';
 import { UserDetails } from '../subpages';
@@ -7,67 +8,69 @@ import { UserDetails } from '../subpages';
 const protectedRoute =  async () => {
     const isUserPassword = await localStorage.userPassword
     if (!isUserPassword) {
-      return redirect("/");
+      return redirect("/login");
     }
     return "";
   }
-
 const router = createBrowserRouter(
   [
     {
-        path: '/',
-        element: <TheLoginPage />,
-        id: 'loginPage',
-      },
-      {
-        path: '/app',
-        element: <TheDashboardPage />,
-        loader: protectedRoute,
-        id: 'dashboardPage',
-        children: [
-            {
-                path: 'users',
-                element: <TheUsersPage />,
-                id: 'usersPage',
+      path: '/',
+      element: <App />,
+      id: 'appRoot',
+      children: [
+        {
+          path: '/app',
+          element: <TheDashboardPage />,
+          loader: protectedRoute,
+          id: 'dashboardPage',
+        },
+        {
+          path: '/users',
+          element: <TheUsersPage />,
+          loader: protectedRoute,
+          id: 'usersPage',
+          children: [
+              {
+                path:':userId',
+                element: <UserDetails />,
+                id: 'userDetailPage',
                 children: [
                     {
-                        path:':userId',
-                        element: <UserDetails />,
-                        id: 'userDetailPage',
-                        children: [
-                            {
-                                path:'',
-                                element: <UserDetailsGeneralDetails/>
-                              },
-                              {
-                                path:'documents',
-                                element: <UserDetailsDocuments />
-                              },
-                              {
-                                path:'bank-details',
-                                element: <UserDetailsDocuments />
-                              },
-                              {
-                                path:'loan',
-                                element: <UserDetailsDocuments />
-                              },
-                              {
-                                path:'savings',
-                                element: <UserDetailsDocuments />
-                              },
-                              {
-                                path:'app-and-systems',
-                                element: <UserDetailsDocuments />
-                              }
-                        ]
-                    }
-                    
-                  ]
-              },
-        ]
-      }
-      
+                        path:'general-details',
+                        element: <UserDetailsGeneralDetails/>
+                      },
+                      {
+                        path:'documents',
+                        element: <UserDetailsDocuments />
+                      },
+                      {
+                        path:'bank-details',
+                        element: <UserDetailsDocuments />
+                      },
+                      {
+                        path:'loan',
+                        element: <UserDetailsDocuments />
+                      },
+                      {
+                        path:'savings',
+                        element: <UserDetailsDocuments />
+                      },
+                      {
+                        path:'app-and-systems',
+                        element: <UserDetailsDocuments />
+                      }
+                ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      path: '/login',
+      element: <TheLoginPage />,
+      id: 'loginPage',
+    }
   ]
 )
-
 export default router
