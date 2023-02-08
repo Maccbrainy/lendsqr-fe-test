@@ -9,12 +9,12 @@
 <div align="center">
     <br>
     <img src="https://i.ibb.co/WkLFR8Q/Lendsqr-login-Page.jpg" alt="Lendsqr-fe-test login page">
-    <img src="https://i.ibb.co/ssz6hHN/Lendsqr-users-List-Page.jpg" alt="Lendsqr-fe-test users list page">
-    <img src="https://i.ibb.co/xjyN1vD/Lendsqr-user-Detailed-Page.jpg" alt="Lendsqr-fe-test user detailed page">
+    <img src="https://i.ibb.co/b27SJ2m/Lendsqr-fe-test-users-Page.png" alt="Lendsqr-fe-test users list page">
+    <img src="https://i.ibb.co/CnqqWJQ/Lendsqr-fe-test-user-Detailed-Page.png" alt="Lendsqr-fe-test user detailed page">
 </div>
 <br>
-<p>This project is bootstrapped with <a href="https://vitejs.dev/">ViteJs</a></p>
-This project repository contains the following code bases tools:
+<p>This is a react-typescript project bootstrapped with <a href="https://vitejs.dev/">ViteJs</a></p>
+It contains the following code bases tools:
 
 | Directory | Code Base |
 |-----------|-----------|
