@@ -30,7 +30,7 @@ export default function NavBar(){
         <>
         <nav className="navigation-top-bar">
             <div className="navbar-left">
-                <NavLink className="logo-link" to={'/'}>
+                <NavLink className="logo-link" to={'/app'}>
                     <img className="logo-size" title="Lendsqr logo" src={lendsqrLogoSource} alt="Lendsqr logo" />
                 </NavLink>
                 <div className="search-container">

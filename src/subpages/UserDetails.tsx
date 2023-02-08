@@ -17,7 +17,7 @@ export default function UserDetailsLanding(){
     document.title = `Lendsqr: User Details`
     return (
         <div className="UserDetailsHero">
-            <NavLink to={'/app/users'} className="breadcrumb">
+            <NavLink to={'/users'} className="breadcrumb">
                 <HiArrowLongLeft />
                 <div>Back to Users</div>
             </NavLink>
@@ -58,7 +58,7 @@ export default function UserDetailsLanding(){
                                 </div>
                             </div>
                             <div className="detail-hero-navigation">
-                                <NavLink className="hero-link" to={''}>General details</NavLink>
+                                <NavLink className="hero-link" to={'general-details'}>General details</NavLink>
                                 <NavLink className="hero-link" to={'documents'}>Documents</NavLink>
                                 <NavLink className="hero-link" to={'bank-details'}>Bank details</NavLink>
                                 <NavLink className="hero-link" to={'loan'}>Loan</NavLink>
