@@ -289,6 +289,10 @@ TheUsersPage SCSS
                 box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
                 // transition: 0.2s ease-in;
                 z-index: 5;
+                @media (max-width: $md){
+                    right: 1em;
+                    width: max-content;
+                }
     
                 .action-modal {
                     display: flex;
