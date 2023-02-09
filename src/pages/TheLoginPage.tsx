@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import InputForm from "../components/InputForm";
 import LoginWelcomeImage from "../assets/login-welcome-image.svg";
-import LenderSqrMobileLogo from "/lendsqr.svg";
+import LendSqrMobileLogo from "/lendsqr.svg";
 export default function TheLoginPage(){
     //Title document
     document.title = "Lendsqr: Log In";
@@ -20,7 +20,7 @@ export default function TheLoginPage(){
         setLoginInputData((prevState) => ({...prevState, [event.target.name]: event.target.value}))
     }
     const showPasswordHandle = () => {
-        showPassword ? setShowPassword(false) : setShowPassword(true)
+        setShowPassword(showPassword => !showPassword)
     }
     const submitLoginInputData = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
@@ -44,7 +44,7 @@ export default function TheLoginPage(){
                 </div>
                 <div className="login-welcome-form">
                     <div  className="login-form">
-                        <img className="login-logo" src={LenderSqrMobileLogo} alt="lendsqr logo" title="lendsqr" />
+                        <img className="login-logo" src={LendSqrMobileLogo} alt="lendsqr logo" title="lendsqr" />
                         <h1 className="login-title">Welcome!</h1>
                         <p>Enter details to login.</p>
                         <form className="form-fields">
