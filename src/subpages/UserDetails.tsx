@@ -1,6 +1,7 @@
 import { useQuery } from "react-query";
 import { NavLink, Outlet, useParams } from "react-router-dom";
 import { HiArrowLongLeft } from "react-icons/hi2";
+import Loader from "../components/Loader";
 
 export default function UserDetailsLanding(){
     //Getting user id from route params
@@ -17,19 +18,20 @@ export default function UserDetailsLanding(){
     document.title = `Lendsqr: User Details`
     return (
         <div className="UserDetailsHero">
-            <NavLink to={'/users'} className="breadcrumb">
-                <HiArrowLongLeft />
-                <div>Back to Users</div>
-            </NavLink>
+            
                 {
                     status === "error" && <p className="error-message-fetching-data">Error fetching data</p>
                 }
                 {
-                    status === "loading" && <p className="fetching-data-message"> Loading ... </p>
+                    status === "loading" && <Loader/>
                 }
                 {
                 status === "success" && (
                     <>
+                        <NavLink to={'/users'} className="breadcrumb">
+                            <HiArrowLongLeft />
+                            <div>Back to Users</div>
+                        </NavLink>
                         <div className="detail-actions">
                             <h1>User Details</h1>
                             <div className="actions-button">

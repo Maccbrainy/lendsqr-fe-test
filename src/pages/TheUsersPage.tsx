@@ -5,6 +5,7 @@ import { ActiveUsersIcon, FilterViewIcon, NoOfUsersIcon, UsersWithLoanIcon, User
 import TablePagination from "../components/TablePagination";
 import TableFiltersModal from "../components/TableFiltersModal";
 import TableActionsViewModal from "../components/TableActionsViewModal";
+import Loader from "../components/Loader";
 interface UsersCardProps {
     cardIcon: any,
     cardTitle: string,
@@ -73,7 +74,6 @@ export default function TheUsersPage(){
     const showTableFilter = () => {
         openTableFilter ? setOpenTableFilter(false) : setOpenTableFilter(true);
     }
-
     useEffect(() => {
         //Add and remove event listener on opening and closing of usersActionModal
         const caughtOutSideClickAndCloseModal = (event: { target: any }) => {
@@ -99,17 +99,17 @@ export default function TheUsersPage(){
         
         <>
         <div className={`users-page ${pathname == '/users' ? 'visible' : 'hidden'}`}>
-            <h1 className="users-title">Users</h1>
+            
             {
                 status === "error" && <p className="error-message-fetching-data">Error fetching data</p>
             }
             {
-                status === "loading" && <p className="fetching-data-message"> Loading ...</p>
+                status === "loading" && <Loader/>
             }
             {
                 status === "success" && (
                     <>
-                    
+                        <h1 className="users-title">Users</h1>
                         <div className="users-card-section">
                             <UsersCardAnalytics cardIcon={<NoOfUsersIcon />} cardTitle={'Users'} cardValue={data.length} cardClass={'no-of-users'} />
                             <UsersCardAnalytics cardIcon={<ActiveUsersIcon />} cardTitle={'Active users'} cardValue={data.length} cardClass={'active-users'} />

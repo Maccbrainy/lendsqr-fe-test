@@ -1,0 +1,44 @@
+.loader-container {
+	width: 100%;
+	height: 75vh;
+	text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $teal;
+
+    .loader-speed-spinner {
+        width: 49px;
+        height: 49px;
+        margin: 0 auto;
+        border: 3px solid $teal;
+        border-radius: 50%;
+        border-left-color: transparent;
+        border-right-color: transparent;
+        animation: loader-spin 400ms infinite linear;
+            -o-animation: loader-spin 400ms infinite linear;
+            -ms-animation: loader-spin 400ms infinite linear;
+            -webkit-animation: loader-spin 400ms infinite linear;
+            -moz-animation: loader-spin 400ms infinite linear;
+    }
+
+}
+@keyframes loader-spin {
+	100%{ transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+@-o-keyframes loader-spin {
+	100%{ -o-transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+@-ms-keyframes loader-spin {
+	100%{ -ms-transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+@-webkit-keyframes loader-spin {
+	100%{ -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+@-moz-keyframes loader-spin {
+	100%{ -moz-transform: rotate(360deg); transform: rotate(360deg); }
+}
