@@ -10,31 +10,7 @@
     padding: 0;
     box-sizing: border-box;
   }
-.w-full {
-    width: 100%;
-}
 
-  .visible {
-    visibility: visible;
-  }
-  .hidden {
-    display: none;
-  }
-  a {
-    color: $blue-gray;
-    text-decoration: none;
-    &.active {
-        text-decoration: none;  
-    }
-  }
-.horizontal-divider {
-    border: 1px solid $blue-lighter;
-    width: 100%;
-}
-.input-data-warning {
-    font-size: 12px;
-    color: $red;
-}
 /*--------------------------------------------------------------
 # COMPONENTS scss files
 --------------------------------------------------------------*/
@@ -96,5 +72,36 @@
         
       }
     }
+
+    .w-full {
+      width: 100%;
+  }
+  
+    .visible {
+      visibility: visible;
+    }
+    .hidden {
+      display: none;
+    }
+    a {
+      color: $blue-gray;
+      text-decoration: none;
+      &.active {
+          text-decoration: none;  
+      }
+    }
+  .horizontal-divider {
+      border: 1px solid $blue-lighter;
+      width: 100%;
+  }
+  .input-data-warning {
+      font-size: 12px;
+      color: $red;
+  }
+  h1 {
+    @media (max-width: $sm){
+      font-size: 16px;
+    }
+  }
 
 }

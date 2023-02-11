@@ -107,7 +107,8 @@
 
         @media (max-width: $sm) {
             position: absolute;
-            right: 65px;
+            right: 54px;
+            gap: 15px;
         }
 
         .nav-doc {
@@ -130,6 +131,10 @@
                 gap: 5px;
                 justify-content: center;
                 align-items: center;
+
+                @media (max-width: $sm) {
+                    display: none;
+                }
             }
 
             .profile-image {
@@ -137,18 +142,14 @@
                     border-radius: 100%;
                 }
             }
-
-            @media (max-width: $sm) {
-                display: none;
-            }
         }
     }
 
     .mobile-menu {
         cursor: pointer;
-        margin-top: 10px;
-        @media (min-width: $sm) {
-            display: none;
+        display: none;
+        @media (max-width: $sm) {
+            display: flex;
         }
     }
 
