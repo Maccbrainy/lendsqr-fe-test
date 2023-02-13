@@ -1,0 +1,275 @@
+.navigation-sidebar {
+    // position: relative;
+    position: fixed;
+    width: 20%;
+    min-width: 283px;
+    height: auto;
+    background: $white;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);
+    margin-top: 75px;
+    
+    &::-webkit-scrollbar {
+        display: none;
+        }
+
+    @media (max-width: $xl) {
+        // position: fixed;
+        width: 100%;
+        min-width: $xs;
+        display: flex;
+        align-items: center;
+        z-index: 10;
+        min-height: 0vh;
+        
+    }
+    @media (min-width: $xl) {
+        height: 100vh;
+        overflow-y: auto;
+        padding-bottom: 90px;
+    }
+    @media (max-width: $sm) {
+        position: relative;
+        height: 100vh;
+        overflow-y: auto;
+        flex-direction: column;
+        align-items: start;
+        min-width: 100%;
+        box-shadow: none;
+        margin-top: 0px;
+    }
+
+    .navbar-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+        &::-webkit-scrollbar {
+            width: 2px;
+            height: 2px;
+          }
+            &::-webkit-scrollbar-thumb {
+            background: $blue-lighter;
+            border-radius: 10px;
+            }
+            &::-webkit-scrollbar-track {
+            background: transparent;
+            } 
+        
+        @media (max-width: $xl) {
+            flex-direction: row;
+            gap: 30px;
+            align-items: center;
+            padding: 0px 30px 10px 16px;
+            overflow-x: auto;
+
+        }
+        @media (max-width: $sm) {
+            flex-direction: column;
+            align-items: initial;
+            overflow-x: hidden;
+            gap: 5px;
+            padding: 0px;
+        }
+        .nav-section {
+            display: flex;
+            flex-direction: column;
+            padding-top: 15px;
+            white-space: nowrap;
+            outline: none;
+            @media (max-width: $xl) {
+                flex-direction: row;
+                gap: 30px;
+                align-items: center;
+                
+            }
+            @media (max-width: $sm) {
+                flex-direction: column;
+                gap: 5px;
+                align-items: start;
+                padding-bottom: 5px;
+            }
+
+            .nav-title {
+                font-size: 13px;
+                text-transform: uppercase;
+                margin-left: 10%;
+                padding-top: 8px;
+                padding-bottom: 8px;
+
+                @media (max-width: $xl) {
+                    display: none;
+                }
+                @media (max-width: $sm) {
+                    display: flex;
+                    margin: 0px;
+                    padding: 0 16px;
+                }
+            }
+            .nav-main {
+                width: 100%;
+                color: $blue-light;
+                display: flex;
+                font-size: 14px;
+                align-items: center;
+                cursor: pointer;
+
+                @media (max-width: $xl) {
+                    display: block;
+                }
+                &:hover,
+                &.active {
+                    background: $teal-light;
+                    @media (max-width: $xl) {
+                        background: transparent;
+                    }
+                    @media (max-width: $sm) {
+                        background: $teal-light;
+                    }
+                    
+                }
+                &.active {
+                    &:before {
+                        position: absolute;
+                        width: 4px;
+                        height: 40px;
+                        background: $teal;
+                        display: block;
+		                content: '';
+    
+                        @media (max-width: $xl) {
+                            position: relative;
+                            width: 100%;
+                            height: 4px;
+                            top: 40px;
+                        }
+                        @media (max-width: $sm) {
+                            display: none;
+                        }
+                    }
+                }
+
+                .nav-link {
+                    display: flex;
+                    flex-wrap: nowrap;
+                    align-items: center;
+                    gap: 0.5em;
+                    margin-left: 10%;
+                    height: 40px;
+                    padding-top: 6px;
+                    padding-bottom: 6px;
+
+                    @media (max-width: $xl) {
+                        width: 100%;
+                        height: 30px;
+                        padding-top: 0px;
+                        padding-bottom: 0px;
+                        margin-left: 0%;
+                    }
+                    @media (max-width: $sm) {
+                        padding: 0 16px;
+                    }
+                }
+                
+            }
+        }
+        
+    }
+    .navigation-button {
+
+        @media (max-width: $sm) {
+            display: none;
+        }
+
+        .button-forward, .button-backward {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            background: $white;
+            border: 1px solid rgba(33, 63, 125, 0.06);
+            border-radius: 100%;
+            width: 30px;
+            height: 30px;
+            top: 18px;
+            cursor: pointer;
+            
+            transition: 0.2s ease-in;
+
+                &:hover {
+                    transform: scale(1.05);
+                }
+                &:active {
+                    transform: scale(0.95);
+                }
+            @media (min-width: $xl) {
+                display: none;
+            }
+        }
+        .button-forward {
+            right: 3px;
+            box-shadow: 18px 4px 18px $white;
+        }
+        .button-backward {
+            left: 13rem;
+            box-shadow: -18px 4px 18px $white;
+        }
+    } 
+    
+    .logout-section {
+        border-top: 1px solid $blue-lighter;
+        width: 100%;
+
+        .logout {
+            display: flex;
+            color: $blue-light;
+            align-items: center;
+            gap: 10px;
+            margin-left: 10%;
+            padding-top: 15px;
+            cursor: pointer;
+        }
+
+        @media (max-width: $xl) {
+            display: none;
+        }
+        @media (max-width: $sm) {
+            display: flex;
+
+            .logout {
+                margin-left: 16px;
+                padding: 8px 0px;
+            }
+            
+        }
+    }
+
+    .switch-organization {
+        display: flex;
+        margin-left: 10%;
+        align-items: center;
+        gap: 5px;
+        color: $blue-light;
+        padding-top: 40px;
+
+        @media (max-width: $xl) {
+            margin-left: 10px;
+            margin-top: -35px;
+            padding-right: 20px;
+        }
+        @media (max-width: $sm) {
+            margin: 0px;
+            padding: 30px 0px 10px 16px;
+        }
+
+        .switch-select {
+            outline: none;
+            border: none;
+            color: $blue-light;
+            font-size: 16px;
+            font-weight: 400;
+        }
+    }
+}
