@@ -1,8 +1,8 @@
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { Outlet, useLocation } from 'react-router-dom'
 import './App.scss'
-import NavBar from './components/NavBar'
-import AppNavigationSidebar from './components/AppNavigationSidebar'
+import NavTopBar from './components/NavTopBar'
+import NavSidebar from './components/NavSidebar'
 import { TheLoginPage } from './pages'
 // interface Props {
 //   children?:ReactNode
@@ -20,10 +20,10 @@ function App() {
           pathname == "/" ? (<TheLoginPage/>) :
           (
             <>
-            <NavBar />
+            <NavTopBar />
             <main>
             <section className='app-page-layout'>
-              <AppNavigationSidebar />
+              <NavSidebar />
               <div className='app-layout-main'>
                 <Outlet />
               </div>

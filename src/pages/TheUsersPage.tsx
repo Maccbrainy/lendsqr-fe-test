@@ -2,10 +2,9 @@ import { MutableRefObject, useEffect, useRef, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { useQuery } from "react-query";
 import { ActiveUsersIcon, FilterViewIcon, NoOfUsersIcon, UsersWithLoanIcon, UsersWithSavingsIcon, ViewMoreIcon } from "../assets/icons";
-import TablePagination from "../components/TablePagination";
-import TableFiltersModal from "../components/TableFiltersModal";
-import TableActionsViewModal from "../components/TableActionsViewModal";
+import { TableFiltersModal, TableActionsViewModal, TablePagination } from "../components/table";
 import Loader from "../components/Loader";
+
 interface UsersCardProps {
     cardIcon: any,
     cardTitle: string,
