@@ -1,1 +1,1 @@
-export { default as UserDetails } from './UserDetails.jsx';
+export { default as UserDetails } from './UserDetails';

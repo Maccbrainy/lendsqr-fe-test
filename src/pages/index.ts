@@ -1,3 +1,3 @@
-export { default as TheLoginPage } from './TheLoginPage.jsx';
-export { default as TheDashboardPage } from './TheDashboardPage.jsx';
-export { default as TheUsersPage } from './TheUsersPage.jsx';
+export { default as TheLoginPage } from './TheLoginPage';
+export { default as TheDashboardPage } from './TheDashboardPage';
+export { default as TheUsersPage } from './TheUsersPage';

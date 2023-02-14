@@ -1,3 +1,3 @@
-export { default as TablePagination} from "../table/TablePagination.jsx"
-export { default as TableActionsViewModal} from "../table/TableActionsViewModal.jsx"
-export { default as TableFiltersModal} from "../table/TableFiltersModal.jsx"
+export { default as TablePagination} from "../table/TablePagination"
+export { default as TableActionsViewModal} from "../table/TableActionsViewModal"
+export { default as TableFiltersModal} from "../table/TableFiltersModal"
