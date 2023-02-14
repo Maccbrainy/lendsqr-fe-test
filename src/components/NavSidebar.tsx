@@ -28,17 +28,150 @@ import {
 } from "../assets/icons";
 
 interface NavigationProps {
-    navIcon: any,
-    navTitle: string
+    navIcon: JSX.Element,
+    navTitle: string,
+    url: string
 }
-const AppNavigationLink = ({navIcon, navTitle}: NavigationProps) => {
+const navSidebarLinksCustomers = [
+    {
+        id: "users-list",
+        title: "Users",
+        url:"/users",
+        icon:<UsersListIcon/>
+    },
+    {
+        id: "guarantors",
+        title: "Guarantors",
+        url:"/#",
+        icon:<GuarantorIcon/>
+    },
+    {
+        id: "loans",
+        title: "Loans",
+        url:"/#",
+        icon:<SackBagIcon/>
+    },
+    {
+        id: "decision-models",
+        title: "Decision Models",
+        url:"/#",
+        icon:<DecisionModelIcon/>
+    },
+    {
+        id: "savings",
+        title: "Savings",
+        url:"/#",
+        icon:<SavingsIcon/>
+    },
+    {
+        id: "loan-request",
+        title: "Loan Request",
+        url:"/#",
+        icon:<LoanRequestIcon/>
+    },
+    {
+        id: "white-list",
+        title: "Whitelist",
+        url:"/#",
+        icon:<WhiteListIcon/>
+    },
+    {
+        id: "Karma",
+        title: "Karma",
+        url:"/#",
+        icon:<KarmaIcon/>
+    },
+]
+const navSidebarLinksBusinesses = [
+    {
+        id: "organization",
+        title: "Organization",
+        url:"/#",
+        icon:<BriefCaseIcon/>
+    },
+    {
+        id: "loan-products",
+        title: "Loan Products",
+        url:"/#",
+        icon:<LoanRequestIcon/>
+    },
+    {
+        id: "savings-products",
+        title: "Savings Products",
+        url:"/#",
+        icon:<SavingsProductsIcon/>
+    },
+    {
+        id: "fees-and-charges",
+        title: "Fees and Charges",
+        url:"/#",
+        icon:<FeesAndChargesIcon/>
+    },
+    {
+        id: "transactions",
+        title: "Transactions",
+        url:"/#",
+        icon:<TransactionIcon/>
+    },
+    {
+        id: "services",
+        title: "Services",
+        url:"/#",
+        icon:<ServicesIcon/>
+    },
+    {
+        id: "Service-account",
+        title: "Service Account",
+        url:"/#",
+        icon:<ServiceAccountIcon/>
+    },
+    {
+        id: "settlements",
+        title: "Settlements",
+        url:"/#",
+        icon:<SettlementsIcon/>
+    },
+    {
+        id: "report",
+        title: "Report",
+        url:"/#",
+        icon:<ReportIcon/>
+    },
+]
+const navSidebarLinksSettings = [
+    {
+        id: "preferences",
+        title: "Preferences",
+        url:"/#",
+        icon:<PreferencesIcon/>
+    },
+    {
+        id: "fees-and-pricing",
+        title: "Fees and Pricing",
+        url:"/#",
+        icon:<FeesAndPricingIcon/>
+    },
+    {
+        id: "audit-logs",
+        title: "Audit Logs",
+        url:"/#",
+        icon:<AuditLogsIcon/>
+    },
+    {
+        id: "systems-messages",
+        title: "Systems Messages",
+        url:"/#",
+        icon:<SystemMessagesIcon/>
+    }
+]
+const NavSideBarLink = ({navIcon, navTitle, url}: NavigationProps) => {
     return (
-        <div className="nav-main">
+        <NavLink to={`${url}`} className="nav-main" title={navTitle}>
             <div className="nav-link">
                 {navIcon}
             <span>{navTitle}</span>
             </div>
-        </div>
+        </NavLink>
     )
 }
 export default function AppNavigationSidebar(){
@@ -93,47 +226,28 @@ export default function AppNavigationSidebar(){
                 </div>
             <nav ref={navBarContainerRef} className="navbar-container">
                 <div className="nav-section">
-                    <NavLink to={'/app'} ref={ref} className={`nav-main`}>
-                        <div className="nav-link">
-                            <HomeIcon/>
-                            <span>Dashboard</span>
-                        </div>
-                    </NavLink>
+                    <NavSideBarLink url="/app" navTitle="Dashboard" navIcon={<HomeIcon/>} />
                 </div>
                 <div className="nav-section">
                     <span className="nav-title">Customers</span>
-                    <NavLink to={'/users'} className={`nav-main`}>
-                        <div className="nav-link">
-                            <UsersListIcon />
-                            <span>Users</span>
-                        </div>
-                    </NavLink>
-                    <AppNavigationLink navIcon={<GuarantorIcon />} navTitle={"Guarantors"} />
-                    <AppNavigationLink navIcon={<SackBagIcon />} navTitle={"Loans"} />
-                    <AppNavigationLink navIcon={<DecisionModelIcon />} navTitle={"Decision Models"} />
-                    <AppNavigationLink navIcon={<SavingsIcon />} navTitle={"Savings"} />
-                    <AppNavigationLink navIcon={<LoanRequestIcon />} navTitle={"Loan Request"} />
-                    <AppNavigationLink navIcon={<WhiteListIcon />} navTitle={"Whitelist"} />
-                    <AppNavigationLink navIcon={<KarmaIcon />} navTitle={"Karma"} />
+                    {
+                        //Customers Links
+                        navSidebarLinksCustomers.map((link, index) => <NavSideBarLink key={link.id + index} url={link.url} navTitle={link.title} navIcon={link.icon} />)
+                    }
                 </div>
                 <div className="nav-section">
                     <span className="nav-title">Businesses</span>
-                    <AppNavigationLink navIcon={<BriefCaseIcon />} navTitle={"Organization"} />
-                    <AppNavigationLink navIcon={<LoanRequestIcon />} navTitle={"Loan Products"} />
-                    <AppNavigationLink navIcon={<SavingsProductsIcon />} navTitle={"Savings Products"} />
-                    <AppNavigationLink navIcon={<FeesAndChargesIcon />} navTitle={"Fees and Charges"} />
-                    <AppNavigationLink navIcon={<TransactionIcon />} navTitle={"Transactions"} />
-                    <AppNavigationLink navIcon={<ServicesIcon />} navTitle={"Services"} />
-                    <AppNavigationLink navIcon={<ServiceAccountIcon />} navTitle={"Service Account"} />
-                    <AppNavigationLink navIcon={<SettlementsIcon />} navTitle={"Settlements"} />
-                    <AppNavigationLink navIcon={<ReportIcon />} navTitle={"Report"} />
+                    {
+                        //Business Links
+                        navSidebarLinksBusinesses.map((link, index) => <NavSideBarLink key={link.id + index} url={link.url} navTitle={link.title} navIcon={link.icon} />)
+                    }
                 </div>
                 <div className="nav-section">
                     <span className="nav-title">Settings</span>
-                    <AppNavigationLink navIcon={<PreferencesIcon />} navTitle={"Preferences"} />
-                    <AppNavigationLink navIcon={<FeesAndPricingIcon />} navTitle={"Fees and Pricing"} />
-                    <AppNavigationLink navIcon={<AuditLogsIcon />} navTitle={"Audit Logs"} />
-                    <AppNavigationLink navIcon={<SystemMessagesIcon />} navTitle={"Systems Messages"} />
+                    {
+                        //Settings Links
+                        navSidebarLinksSettings.map((link, index) => <NavSideBarLink key={link.id + index} url={link.url} navTitle={link.title} navIcon={link.icon} />)
+                    }
                 </div>
             </nav>
             <div className="navigation-button">
